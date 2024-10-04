@@ -2,13 +2,14 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const express = require("express");
 const mongoose = require("mongoose");
+const jsonwebtoken = require("jsonwebtoken");
 
 dotenv.config();
 
 // Express App
 const app = express();
 
-// Configuring CORS to allow all origins
+//Configuring CORS to allow all origins
 app.use(
     cors({
         origin: "*",
@@ -17,20 +18,17 @@ app.use(
     })
 );
 
-// Configuring body-parser (integrated in Express)
 app.use(express.json()); // To parse JSON
 app.use(express.urlencoded({ extended: true })); // To parse form data
 
-// Database connection
-console.log("BACKEND.......");
 const PORT = process.env.PORT || 5000;
+
 mongoose
     .connect(process.env.MONGO_URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     })
     .then(() => {
-        console.log("Connected to MongoDB");
         app.listen(PORT, () => {
             console.log(`Server running on port ${PORT}`);
         });
@@ -39,7 +37,27 @@ mongoose
         console.error(err);
     });
 
-
+// JWT setup
+app.use((req, res, next) => {
+    if (
+        req.headers &&
+        req.headers.authorization &&
+        req.headers.authorization.split("=")[0] === "JWT"
+    ) {
+        jsonwebtoken.verify(
+            req.headers.authorization.split("=")[1],
+            process.env.SECRET_JWT_SIGN,
+            (err, decode) => {
+                if (err) req.user = undefined;
+                req.user = decode;
+                next();
+            }
+        );
+    } else {
+        req.user = undefined;
+        next();
+    }
+});
 
 // Routes
 // Basic route
@@ -47,5 +65,7 @@ app.get("/", (req, res) => {
     res.send("Hello World");
 });
 
+const authRoutes = require("./src/routes/AuthRoutes");
+app.use("/api/auth", authRoutes);
 
 module.exports = app;

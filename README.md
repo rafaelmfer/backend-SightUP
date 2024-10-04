@@ -60,8 +60,7 @@ curl --location 'localhost:5000/api/auth/register' \
 -   **Database**: [MongoDB](https://www.mongodb.com/)
 -   **Authentication**: [JWT](https://jwt.io/)
 
-
 ## Database
 
-- [Dictionary/Glossary]()
-- [EDR Diagram]()
+-   [Dictionary/Glossary]()
+-   [EDR Diagram]()
