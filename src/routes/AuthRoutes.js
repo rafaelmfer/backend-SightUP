@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const { login, register } = require("../controllers/exampleAuthController");
+const { login, registerNewUser } = require("../controllers/AuthController");
 
 const router = express();
 
@@ -11,12 +11,7 @@ router.use(cors()); // This will enable CORS for all routes
 router.use(express.json()); // To parse JSON
 router.use(express.urlencoded({ extended: true })); // To parse form data
 
-// registration route
-router.route("/register").post(register);
-
-// login route
-//router.route("/login").post(login);
-
-router.route("/login", login);
+router.route("/register").post(registerNewUser);
+router.route("/login").post(login);
 
 module.exports = router;

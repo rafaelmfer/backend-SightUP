@@ -1,10 +1,18 @@
-const User = require("../models/ExampleUserModel");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { User } = require("../models/UserModel");
 
-const register = async (req, res) => {
+const registerNewUser = async (req, res) => {
     try {
         const newUser = new User(req.body);
+
+        const userExist = await User.findOne({ email: req.body.email });
+        if (userExist) {
+            return res.status(400).json({
+                message: "User already exists",
+            });
+        }
+
         newUser.hashPassword = bcrypt.hashSync(req.body.password, 10);
 
         // Save the new user to the database
@@ -28,8 +36,10 @@ const register = async (req, res) => {
  * @returns {Object} JSON object containing a JWT token upon successful authentication.
  */
 const login = async (req, res) => {
+    const { password, email } = req.body;
+
     try {
-        const user = await User.findOne({ email: req.body.email });
+        const user = await User.findOne({ email: email });
 
         if (!user) {
             return res.status(401).json({
@@ -37,10 +47,7 @@ const login = async (req, res) => {
             });
         }
 
-        const isMatch = await user.comparePassword(
-            req.body.password,
-            user.hashPassword
-        );
+        const isMatch = await user.comparePassword(password, user.hashPassword);
 
         if (!isMatch) {
             return res.status(401).json({
@@ -57,7 +64,11 @@ const login = async (req, res) => {
             { expiresIn: "8h" } // Set token expiration time
         );
 
-        return res.json({ token });
+        user.hashPassword = undefined;
+        return res.json({
+            accessToken: token,
+            user: user,
+        });
     } catch (err) {
         return res.status(400).send({
             message: err.message,
@@ -89,6 +100,6 @@ const authenticateJWT = (req, res, next) => {
 
 module.exports = {
     login,
-    register,
+    registerNewUser,
     authenticateJWT,
 };

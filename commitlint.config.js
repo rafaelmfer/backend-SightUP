@@ -3,7 +3,7 @@ module.exports = {
     rules: {
         "header-case": [0, "always"],
         "subject-case": [0, "never"],
-        "subject-empty": [2, "never"],
+        "subject-empty": [0, "never"],
         "type-enum": [
             2,
             "always",
