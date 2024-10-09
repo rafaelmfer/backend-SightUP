@@ -6,9 +6,6 @@ const jsonwebtoken = require("jsonwebtoken");
 
 dotenv.config();
 
-// Routes imports
-const taskRoutes = require("./src/routes/taskRoutes");
-
 // Express App
 const app = express();
 
@@ -27,10 +24,7 @@ app.use(express.urlencoded({ extended: true })); // To parse form data
 const PORT = process.env.PORT || 5000;
 
 mongoose
-    .connect(process.env.MONGO_URI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    })
+    .connect(process.env.MONGO_URI)
     .then(() => {
         app.listen(PORT, () => {
             console.log(`Server running on port ${PORT}`);
@@ -68,10 +62,12 @@ app.get("/", (req, res) => {
     res.send("Hello World");
 });
 
+
+// Routes imports
 const authRoutes = require("./src/routes/AuthRoutes");
+const taskRoutes = require("./src/routes/taskRoutes");
 
 app.use("/api/auth", authRoutes);
-
 app.use("/api/tasks", taskRoutes);
 
 module.exports = app;

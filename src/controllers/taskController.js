@@ -18,7 +18,18 @@ const getTests = async (req, res) => {
     }
 };
 
+const getExercises = async (req, res) => {
+    try {
+        const users = await Task.find({ type: "exercise" });
+        res.status(200).json(users);
+    } catch (error) {
+        res.status(500).json({ message: 'Erro ao buscar os exercícios', error });
+    }
+}
+
+
 module.exports = {
     getTasks,
     getTests,
+    getExercises
 };
