@@ -23,13 +23,15 @@ const getExercises = async (req, res) => {
         const users = await Task.find({ type: "exercise" });
         res.status(200).json(users);
     } catch (error) {
-        res.status(500).json({ message: 'Erro ao buscar os exercícios', error });
+        res.status(500).json({
+            message: "Error fetching exercise",
+            error,
+        });
     }
-}
-
+};
 
 module.exports = {
     getTasks,
     getTests,
-    getExercises
+    getExercises,
 };

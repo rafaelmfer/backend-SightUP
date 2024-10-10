@@ -62,7 +62,6 @@ app.get("/", (req, res) => {
     res.send("Hello World");
 });
 
-
 // Routes imports
 const authRoutes = require("./src/routes/AuthRoutes");
 const taskRoutes = require("./src/routes/taskRoutes");

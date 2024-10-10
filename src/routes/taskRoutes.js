@@ -2,7 +2,11 @@ const express = require("express");
 const cors = require("cors");
 //const { authenticateJWT } = require("../controllers/AuthController");
 
-const { getTasks, getTests, getExercises } = require("../controllers/taskController");
+const {
+    getTasks,
+    getTests,
+    getExercises,
+} = require("../controllers/taskController");
 const router = express.Router();
 
 router.use(cors());
@@ -13,6 +17,6 @@ router.route("/allTasks").get(getTasks);
 
 router.route("/tests").get(getTests);
 
-router.route("/exercise").get(getExercises)
+router.route("/exercise").get(getExercises);
 
 module.exports = router;
