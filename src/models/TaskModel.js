@@ -5,26 +5,34 @@ const taskSchema = new mongoose.Schema({
         type: String,
     },
     title: { type: String, required: true },
+    shortDescription: { type: String, required: true },
     description: { type: String, required: true },
-    type: { type: String, enum: ["test", "exercise"], required: true }, // To distinguish between test or exercise
-
+    type: { type: String, enum: ["test", "exercise"], required: true },
     testMode: {
         type: [String],
         enum: ["touch", "voice", "smartwatch"],
         required: function () {
             return this.type === "test";
-        }, // Only retrieve for test
+        },
+    },
+    checkList: {
+        type: [String],
+        required: function () {
+            return this.type === "test";
+        },
+    },
+    howItWorks: {
+        type: [String],
+        required: function () {
+            return this.type === "test";
+        },
     },
     video: { type: String },
     images: { type: String },
-
     duration: {
         type: String,
     },
-    exercise_instruction: {
-        type: String,
-    },
-    short_description: {
+    exerciseInstruction: {
         type: String,
     },
 });

@@ -6,9 +6,6 @@ const jsonwebtoken = require("jsonwebtoken");
 
 dotenv.config();
 
-// Routes imports
-const taskRoutes = require("./src/routes/taskRoutes");
-
 // Express App
 const app = express();
 

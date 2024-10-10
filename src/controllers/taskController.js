@@ -24,7 +24,7 @@ const getExercises = async (req, res) => {
         res.status(200).json(users);
     } catch (error) {
         res.status(500).json({
-            message: "Erro ao buscar os exercícios",
+            message: "Error fetching exercise",
             error,
         });
     }
