@@ -17,6 +17,16 @@ const taskSchema = new mongoose.Schema({
     },
     video: { type: String },
     images: { type: String },
+
+    duration: {
+        type: String,
+    },
+    exercise_instruction: {
+        type: String,
+    },
+    short_description: {
+        type: String,
+    },
 });
 
 module.exports = mongoose.model("Task", taskSchema);

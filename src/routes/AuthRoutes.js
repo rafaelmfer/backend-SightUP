@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const { login, registerNewUser } = require("../controllers/AuthController");
+const { login, registerNewUser} = require("../controllers/AuthController");
 
 const router = express();
 
@@ -13,5 +13,6 @@ router.use(express.urlencoded({ extended: true })); // To parse form data
 
 router.route("/register").post(registerNewUser);
 router.route("/login").post(login);
+
 
 module.exports = router;
