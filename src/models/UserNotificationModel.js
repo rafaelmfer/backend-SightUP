@@ -20,6 +20,9 @@ const notificationSchema = new mongoose.Schema({
     dateToTrigger: {
         type: Date,
     },
+    timeToTrigger: {
+        type: String,
+    }
 });
 
 const userNotification = new mongoose.Schema(
@@ -35,7 +38,6 @@ const userNotification = new mongoose.Schema(
             type: [notificationSchema],
         },
     },
-    { collection: "notifications", _id: false }
 );
 
 const UserNotification = mongoose.model("UserNotifications", userNotification);

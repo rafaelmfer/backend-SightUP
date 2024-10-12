@@ -14,7 +14,7 @@ const preferenceSchema = new mongoose.Schema({
     unit: {
         type: String,
     },
-});
+}, { _id: false });
 
 const glassesSchema = new mongoose.Schema({
     left: {
@@ -23,7 +23,7 @@ const glassesSchema = new mongoose.Schema({
     right: {
         type: String,
     },
-});
+}, { _id: false });
 
 const contactLensSchema = new mongoose.Schema({
     left: {
@@ -32,7 +32,7 @@ const contactLensSchema = new mongoose.Schema({
     right: {
         type: String,
     },
-});
+}, { _id: false });
 
 const eyeWearSchema = new mongoose.Schema({
     glasses: {
@@ -41,7 +41,7 @@ const eyeWearSchema = new mongoose.Schema({
     contactLens: {
         type: contactLensSchema,
     },
-});
+}, { _id: false });
 
 const userSchema = new mongoose.Schema(
     {

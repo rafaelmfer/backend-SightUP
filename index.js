@@ -65,8 +65,10 @@ app.get("/", (req, res) => {
 // Routes imports
 const authRoutes = require("./src/routes/AuthRoutes");
 const taskRoutes = require("./src/routes/taskRoutes");
+const notificationRoutes = require("./src/routes/notificationRoutes");
 
 app.use("/api/auth", authRoutes);
 app.use("/api/tasks", taskRoutes);
+app.use("/api/notification", notificationRoutes);
 
 module.exports = app;
