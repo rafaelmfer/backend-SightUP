@@ -8,9 +8,13 @@ const taskSchema = new mongoose.Schema({
     shortDescription: { type: String, required: true },
     description: { type: String, required: true },
     type: { type: String, enum: ["test", "exercise"], required: true },
+
     testMode: {
-        type: [String],
-        enum: ["touch", "voice", "smartwatch"],
+        type: {
+            touch: { type: String, required: true },
+            voice: { type: String, required: true },
+            smartwatch: { type: String, required: true },
+        },
         required: function () {
             return this.type === "test";
         },
