@@ -2,7 +2,6 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { User } = require("../models/UserModel");
 
-
 const registerNewUser = async (req, res) => {
     try {
         const newUser = new User(req.body);
@@ -25,6 +24,36 @@ const registerNewUser = async (req, res) => {
         return res.json(user);
     } catch (err) {
         return res.status(400).send({
+            message: err.message,
+        });
+    }
+};
+
+/**
+ * Login Email Endpoint - Checks if exists a user with that email
+ *
+ * @param {Object} req - Express request object containing the user's email. `{ email: abc@example.com }`
+ * @returns {Object} JSON object containing a boolean if the user exists or not exist.
+ */
+const loginEmail = async (req, res) => {
+    try {
+        const user = await User.findOne({ email: req.query.email });
+
+        // Returns a structured JSON with a boolean
+        if (!user) {
+            return res.json({
+                success: false,
+                message: "User not found",
+            });
+        }
+
+        return res.json({
+            success: true,
+            message: "User found",
+        });
+    } catch (err) {
+        return res.status(400).send({
+            success: false,
             message: err.message,
         });
     }
@@ -99,9 +128,9 @@ const authenticateJWT = (req, res, next) => {
     }
 };
 
-
 module.exports = {
-    login,
     registerNewUser,
-    authenticateJWT
+    loginEmail,
+    login,
+    authenticateJWT,
 };
