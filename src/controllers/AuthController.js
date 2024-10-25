@@ -67,6 +67,7 @@ const loginEmail = async (req, res) => {
  */
 const login = async (req, res) => {
     const { password, email } = req.body;
+    var createProfile = false;
 
     try {
         const user = await User.findOne({ email: email });
@@ -94,10 +95,21 @@ const login = async (req, res) => {
             { expiresIn: "8h" } // Set token expiration time
         );
 
+        if (
+            !user.birthday ||
+            !user.gender ||
+            !user.measurement ||
+            !user.goal ||
+            !user.frequencyExercise
+        ) {
+            createProfile = true;
+        }
+
         user.hashPassword = undefined;
         return res.json({
             accessToken: token,
             user: user,
+            createProfile: createProfile,
         });
     } catch (err) {
         return res.status(400).send({
