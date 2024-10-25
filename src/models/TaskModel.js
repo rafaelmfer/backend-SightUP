@@ -8,7 +8,6 @@ const taskSchema = new mongoose.Schema({
     shortDescription: { type: String, required: true },
     description: { type: String, required: true },
     type: { type: String, enum: ["test", "exercise"], required: true },
-
     testMode: {
         type: {
             touch: { type: String, required: true },
@@ -33,12 +32,10 @@ const taskSchema = new mongoose.Schema({
     },
     video: { type: String },
     images: { type: String },
-    duration: {
-        type: String,
-    },
-    exerciseInstruction: {
-        type: String,
-    },
+    duration: { type: Number },
+    helps: { type: Array },
+    category: { type: String },
+    motivation: { type: String },
 });
 
 module.exports = mongoose.model("Task", taskSchema);
