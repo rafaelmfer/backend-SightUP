@@ -62,25 +62,25 @@ const userSchema = new mongoose.Schema(
         },
         firstName: {
             type: String,
-            required: true,
         },
         lastName: {
             type: String,
-            required: true,
         },
         gender: {
             type: String,
-            required: false,
         },
         birthday: {
             type: Number,
-            required: false,
         },
         preferences: {
             type: preferenceSchema,
         },
         eyeWear: {
             type: eyeWearSchema,
+        },
+        userName: {
+            type: String,
+            required: true,
         },
     },
     { collection: "users" }
