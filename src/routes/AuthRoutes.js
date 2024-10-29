@@ -4,6 +4,7 @@ const {
     registerNewUser,
     loginEmail,
     login,
+    loginWithFirebase,
 } = require("../controllers/AuthController");
 
 const router = express();
@@ -18,5 +19,6 @@ router.use(express.urlencoded({ extended: true })); // To parse form data
 router.route("/register").post(registerNewUser);
 router.route("/loginEmail").post(loginEmail);
 router.route("/login").post(login);
+router.route("/loginWithProvider").post(loginWithFirebase);
 
 module.exports = router;
