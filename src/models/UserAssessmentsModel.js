@@ -1,41 +1,72 @@
 const mongoose = require("mongoose");
 
-const assessmentSchema = new mongoose.Schema({
-    assessmentId: {
-        type: mongoose.Schema.Types.ObjectId,
-        default: function () {
-            return new mongoose.Types.ObjectId(); // Generates ObjectId by default
-        },
-    },
-    status: {
-        type: Boolean,
-    },
-    exerciseFeeling: {
+const dailyCheckInfo = new mongoose.Schema({
+    visionStatus: {
         type: String,
     },
-    dailyCheck: {
-        type: Number,
+    condition: {
+        type: [String],
+    },
+    causes: {
+        type: [String],
+    },
+    infoTime: {
+        type: Date,
+        default: Date.now,
+    },
+    done: {
+        type: Boolean,
     },
 });
 
-const userAssessmentSchema = new mongoose.Schema(
-    {
-        userId: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "users",
-        },
-        date: {
-            type: Date,
-        },
-        assessments: {
-            type: assessmentSchema,
+const dailyExerciseInfo = new mongoose.Schema({
+    eyesNow: {
+        type: String,
+    },
+    category: {
+        type: String,
+    },
+    exerciseName: {
+        type: String,
+    },
+    exerciseTime: {
+        type: Date,
+        default: Date.now,
+    },
+    done: {
+        type: Boolean,
+    },
+});
+
+const dailyAssessmentSchema = new mongoose.Schema({
+    assessmentId: {
+        type: mongoose.Schema.Types.ObjectId,
+        default: function () {
+            return new mongoose.Types.ObjectId();
         },
     },
-    { collection: "assessments", _id: false }
-);
+    exerciseFelling: {
+        type: String,
+    },
+    dailyCheckDate: {
+        type: String,
+        default: function () {
+            const now = new Date();
+            return now.toISOString().substring(0, 10);
+        },
+    },
+    email: {
+        type: String,
+        required: true,
+    },
+    dailyCheckInfo: {
+        type: dailyCheckInfo,
+    },
+    dailyExerciseInfo: [dailyExerciseInfo],
+});
 
-const userAssessment = mongoose.model("User", userAssessmentSchema);
+const Daily = mongoose.model("Assessments", dailyAssessmentSchema);
 
 module.exports = {
-    userAssessment,
+    Daily,
 };
