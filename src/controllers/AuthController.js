@@ -1,7 +1,39 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const admin = require("firebase-admin");
 const { User } = require("../models/UserModel");
 
+const serviceAccountPath = process.env.FIREBASE_SERVICE_ACCOUNT_PATH;
+const serviceAccount = require(serviceAccountPath);
+
+admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+});
+
+const generateToken = (email, id) => {
+    let token = jwt.sign(
+        {
+            email: email,
+            _id: id,
+        },
+        process.env.SECRET_JWT_SIGN,
+        { expiresIn: "8h" } // Set token expiration time
+    );
+
+    return token;
+};
+
+const generateObjectIdFromUid = async (uid) => {
+    const hash = await bcrypt.hash(uid, 10); // Generates hash of uid
+    return hash.replace(/[^a-f0-9]/gi, "").substring(0, 24);
+};
+
+/**
+ * Register Endpoint - Registers a new user to the app.
+ * The password is hashed before saving it to the database.
+ * @param {Object} req - Express request object containing the user's data. `{ email: string, password: string }`
+ * @returns {Object} User object
+ */
 const registerNewUser = async (req, res) => {
     try {
         const newUser = new User(req.body);
@@ -21,7 +53,13 @@ const registerNewUser = async (req, res) => {
         // Remove the password from the response
         user.hashPassword = undefined;
 
-        return res.json(user);
+        const token = generateToken(user.email, user._id);
+
+        return res.json({
+            accessToken: token,
+            user: user,
+            createProfile: createProfile,
+        });
     } catch (err) {
         return res.status(400).send({
             message: err.message,
@@ -86,14 +124,7 @@ const login = async (req, res) => {
             });
         }
 
-        const token = jwt.sign(
-            {
-                email: user.email,
-                _id: user._id,
-            },
-            process.env.SECRET_JWT_SIGN,
-            { expiresIn: "8h" } // Set token expiration time
-        );
+        const token = generateToken(user.email, user._id);
 
         if (
             !user.birthday ||
@@ -114,6 +145,60 @@ const login = async (req, res) => {
     } catch (err) {
         return res.status(400).send({
             message: err.message,
+        });
+    }
+};
+
+/**
+ * Login with Firebase - Validate idToken from Firebase and generates a new JWT.
+ *
+ * @param {Object} req - Object that contains the idToken `{ idToken: "firebase_id_token" }`
+ * @returns {Object} JSON with the user object, JWT token, and createProfile variable.
+ */
+const loginWithFirebase = async (req, res) => {
+    const { idToken } = req.body;
+
+    if (!idToken) {
+        return res.status(400).json({
+            message: "idToken not provided",
+        });
+    }
+
+    try {
+        // Validates the idToken using Firebase Admin SDK
+        const decodedToken = await admin.auth().verifyIdToken(idToken);
+
+        let user = await User.findOne({
+            $or: [{ email: decodedToken.email }],
+        });
+
+        let createProfile = false;
+
+        if (!user) {
+            user = await new User({
+                email: decodedToken.email,
+            }).save();
+        } else {
+            createProfile =
+                !user.birthday ||
+                !user.gender ||
+                !user.measurement ||
+                !user.goal ||
+                !user.frequencyExercise;
+        }
+
+        // Generates New JWT
+        const token = generateToken(user.email, user._id);
+
+        res.json({
+            accessToken: token,
+            user: user,
+            createProfile: createProfile,
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(401).json({
+            message: "idToken invalid",
         });
     }
 };
@@ -144,5 +229,6 @@ module.exports = {
     registerNewUser,
     loginEmail,
     login,
+    loginWithFirebase,
     authenticateJWT,
 };

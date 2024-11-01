@@ -51,36 +51,27 @@ const userSchema = new mongoose.Schema(
                 return new mongoose.Types.ObjectId(); // Generates ObjectId by default
             },
         },
+        userName: {
+            type: String,
+        },
         email: {
             type: String,
-            required: true,
             unique: true,
         },
         hashPassword: {
-            type: String,
-            required: true,
-        },
-        firstName: {
-            type: String,
-        },
-        lastName: {
             type: String,
         },
         gender: {
             type: String,
         },
         birthday: {
-            type: Number,
+            type: String,
         },
         preferences: {
             type: preferenceSchema,
         },
         eyeWear: {
             type: eyeWearSchema,
-        },
-        userName: {
-            type: String,
-            required: true,
         },
     },
     { collection: "users" }

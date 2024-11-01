@@ -1,18 +1,10 @@
 const { User } = require("../models/UserModel");
 
 const setupProfile = async (req, res) => {
-    console.log(res);
     const { userId, email, userName, birthday, gender, unit, goal, frequency } =
         req.body;
 
     try {
-        console.log(email);
-        console.log(gender);
-        console.log(unit);
-        console.log(frequency);
-        console.log(birthday);
-        console.log(userId);
-
         const updatedUser = await User.findOneAndUpdate(
             { $or: [{ _id: userId }, { email: email }] },
             {
