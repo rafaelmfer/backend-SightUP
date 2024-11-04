@@ -1,73 +1,56 @@
 const mongoose = require("mongoose");
 
-const contactLensResultSchema = new mongoose.Schema({
-    left: {
-        type: String,
+const resultSchema = new mongoose.Schema(
+    {
+        left: {
+            type: String,
+        },
+        right: {
+            type: String,
+        },
     },
-    right: {
-        type: String,
-    },
-    both: {
-        type: String,
-    },
-});
+    { _id: false }
+);
 
-const noGlassesResultSchema = new mongoose.Schema({
-    left: {
-        type: String,
+const testSchema = new mongoose.Schema(
+    {
+        testId: {
+            type: String,
+        },
+        testTitle: {
+            type: String,
+        },
+        date: {
+            type: Date,
+        },
+        result: {
+            type: resultSchema,
+        },
     },
-    right: {
-        type: String,
-    },
-    both: {
-        type: String,
-    },
-});
+    { _id: false }
+);
 
-const glassesResultSchema = new mongoose.Schema({
-    left: {
+const userHistorySchema = new mongoose.Schema({
+    userId: {
         type: String,
+        required: true,
     },
-    right: {
+    userEmail: {
         type: String,
+        required: true,
+        unique: true,
     },
-    both: {
-        type: String,
-    },
-});
-
-const testSchema = new mongoose.Schema({
-    testID: {
-        type: Number,
-    },
-    testTitle: {
-        type: String,
-    },
-    date: {
-        type: Timestamp,
-    },
-    glassesResult: {
-        type: glassesResultSchema,
-    },
-    noGlassesResult: {
-        type: noGlassesResultSchema,
-    },
-    contactLensResult: {
-        type: contactLensResultSchema,
-    },
-});
-
-const userHistorieSchema = new mongoose.Schema({
-    userID: {
-        type: String,
+    appTest: {
+        type: Boolean,
     },
     tests: {
         type: [testSchema],
+        default: [],
     },
 });
 
-const UserHistories = mongoose.model("User", userHistorieSchema);
+const UserHistory = mongoose.model("UserHistory", userHistorySchema);
 
 module.exports = {
-    UserHistories,
+    UserHistory,
 };
