@@ -1,5 +1,6 @@
 const { User } = require("../models/UserModel");
 const { Daily } = require("../models/UserAssessmentsModel");
+const { UserHistory } = require("../models/UserHistoryModel");
 
 const setupProfile = async (req, res) => {
     const { userId, email, userName, birthday, gender, unit, goal, frequency } =
@@ -124,8 +125,93 @@ const getDailyCheckInfo = async (req, res) => {
     }
 };
 
+const saveTestResult = async (req, res) => {
+    const { userId, userEmail, appTest, testId, testTitle, result } = req.body;
+
+    try {
+        let userHistory = await UserHistory.findOne({ userId, userEmail });
+
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        const newTest = {
+            testId,
+            testTitle,
+            date: today,
+            result,
+        };
+
+        // If it doesn't exist, a new one is created
+        if (!userHistory) {
+            userHistory = new UserHistory({
+                userId,
+                userEmail,
+                appTest,
+                tests: [newTest],
+            });
+        } else {
+            // If it's, we check the date
+            const existingTestIndex = userHistory.tests.findIndex(
+                (test) =>
+                    test.date.getTime() === today.getTime() &&
+                    test.testId === newTest.testId
+            );
+
+            if (existingTestIndex !== -1) {
+                userHistory.tests[existingTestIndex].result = result;
+            } else {
+                userHistory.tests.push(newTest);
+            }
+        }
+
+        await userHistory.save();
+        res.status(200).json({
+            message: "Test result saved successfully",
+            userHistory,
+        });
+    } catch (error) {
+        res.status(500).json({ message: "Error saving test result", error });
+    }
+};
+
+const getUserTests = async (req, res) => {
+    try {
+        const { user } = req.params;
+
+        const filter = {};
+        if (user.includes("@")) {
+            filter.userEmail = user;
+        } else {
+            filter.userId = user;
+        }
+
+        if (Object.keys(filter).length === 0) {
+            return res
+                .status(400)
+                .json({ message: "Please provide either userId or userEmail" });
+        }
+
+        const userTests = await UserHistory.findOne(filter);
+
+        if (!userTests) {
+            return res
+                .status(404)
+                .json({ message: "No test results found for this user" });
+        }
+
+        res.status(200).json(userTests);
+    } catch (error) {
+        res.status(500).json({
+            message: "Error retrieving test results for user",
+            error,
+        });
+    }
+};
+
 module.exports = {
     setupProfile,
     setupDailyCheck,
     getDailyCheckInfo,
+    saveTestResult,
+    getUserTests,
 };

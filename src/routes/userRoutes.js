@@ -6,6 +6,8 @@ const {
     setupProfile,
     setupDailyCheck,
     getDailyCheckInfo,
+    saveTestResult,
+    getUserTests,
 } = require("../controllers/userController");
 const router = express.Router();
 
@@ -17,5 +19,9 @@ router.route("/setupProfile").post(setupProfile);
 router.route("/dailyCheck").post(setupDailyCheck);
 
 router.route("/dailyCheckInfo").get(getDailyCheckInfo);
+
+router.route("/visionHistory").post(saveTestResult);
+
+router.get("/visionHistory/:user", getUserTests);
 
 module.exports = router;
