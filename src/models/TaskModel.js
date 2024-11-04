@@ -33,6 +33,8 @@ const taskSchema = new mongoose.Schema({
     video: { type: String },
     images: { type: String },
     imageInstruction: { type: String },
+    finishTitle: { type: String },
+    advice: { type: String },
     duration: { type: Number },
     helps: { type: Array },
     category: { type: String },
