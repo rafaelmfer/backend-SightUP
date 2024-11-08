@@ -2,6 +2,127 @@ const { User } = require("../models/UserModel");
 const { Daily } = require("../models/UserAssessmentsModel");
 const { UserHistory } = require("../models/UserHistoryModel");
 
+const getUser = async (req, res) => {
+    try {
+        const { userIdentifier } = req.params;
+
+        if (!userIdentifier) {
+            return res
+                .status(400)
+                .json({ message: "Please provide either userId or email" });
+        }
+
+        const filter = {};
+        if (userIdentifier.includes("@")) {
+            filter.email = { $regex: new RegExp(`^${userIdentifier}$`, "i") };
+        } else {
+            filter.userId = userIdentifier;
+        }
+
+        const user = await User.findOne(filter);
+
+        if (!user) {
+            return res.status(404).json({
+                message: "User not found",
+            });
+        }
+
+        const formattedUser = {
+            _id: user._id,
+            email: user.email,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            userId: user.userId,
+            gender: user.gender,
+            userName: user.userName,
+            preferences: user.preferences,
+            birthday: user.birthday,
+            eyeWear: user.eyeWear,
+        };
+
+        return res.json(formattedUser);
+    } catch (error) {
+        return res.status(400).send({
+            message: error.message,
+        });
+    }
+};
+
+const updatePrescription = async (req, res) => {
+    try {
+        const {
+            userId,
+            userEmail,
+            appTest,
+            prescriptionType,
+            prescriptionDate,
+            manufacturer,
+            productName,
+            replacement,
+            prescriptionInfo,
+            notes,
+        } = req.body;
+
+        if (!userId && !userEmail) {
+            return res
+                .status(400)
+                .json({ message: "Please provide either userId or userEmail" });
+        }
+
+        const parsedPrescriptionDate = new Date(prescriptionDate);
+
+        const filter = {};
+        if (userEmail) {
+            filter.email = { $regex: new RegExp(`^${userEmail}$`, "i") };
+        } else {
+            filter._id = userId;
+        }
+
+        const user = await User.findOne(filter);
+
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        const prescriptionData = {
+            appTest,
+            prescriptionDate: parsedPrescriptionDate,
+            manufacturer: manufacturer || null,
+            productName: productName || null,
+            replacement: replacement || null,
+            prescriptionInfo,
+            notes: notes || null,
+        };
+
+        if (prescriptionType === "Glasses") {
+            user.eyeWear = {
+                ...user.eyeWear,
+                glasses: prescriptionData,
+            };
+        } else if (prescriptionType === "Contact Lenses") {
+            user.eyeWear = {
+                ...user.eyeWear,
+                contactLens: prescriptionData,
+            };
+        } else {
+            return res
+                .status(400)
+                .json({ message: "Invalid prescriptionType" });
+        }
+
+        await user.save();
+
+        return res.json({
+            message: "Prescription updated successfully",
+            user: user,
+        });
+    } catch (error) {
+        return res.status(500).send({
+            message: error.message,
+        });
+    }
+};
+
 const setupProfile = async (req, res) => {
     const { userId, email, userName, birthday, gender, unit, goal, frequency } =
         req.body;
@@ -136,31 +257,52 @@ const saveTestResult = async (req, res) => {
 
         const newTest = {
             testId,
-            testTitle,
-            date: today,
-            result,
+            testType: testTitle,
+            left: result.left,
+            right: result.right,
         };
 
-        // If it doesn't exist, a new one is created
         if (!userHistory) {
+            // If user history does not exist, create a new one
             userHistory = new UserHistory({
                 userId,
                 userEmail,
-                appTest,
-                tests: [newTest],
+                tests: [
+                    {
+                        date: today,
+                        appTest,
+                        result: [newTest],
+                    },
+                ],
             });
         } else {
-            // If it's, we check the date
-            const existingTestIndex = userHistory.tests.findIndex(
-                (test) =>
-                    test.date.getTime() === today.getTime() &&
-                    test.testId === newTest.testId
+            // Check if there is already a test entry for today's date
+            const existingDayIndex = userHistory.tests.findIndex(
+                (test) => test.date.getTime() === today.getTime()
             );
 
-            if (existingTestIndex !== -1) {
-                userHistory.tests[existingTestIndex].result = result;
+            if (existingDayIndex === -1) {
+                // No entry for today, create a new one with the new test
+                userHistory.tests.push({
+                    date: today,
+                    appTest,
+                    result: [newTest],
+                });
             } else {
-                userHistory.tests.push(newTest);
+                // There is an entry for today, check if the testId is already present
+                const existingTestIndex = userHistory.tests[
+                    existingDayIndex
+                ].result.findIndex((test) => test.testId === newTest.testId);
+
+                if (existingTestIndex === -1) {
+                    // testId does not exist, add the new test to the results array
+                    userHistory.tests[existingDayIndex].result.push(newTest);
+                } else {
+                    // testId already exists, replace the test information
+                    userHistory.tests[existingDayIndex].result[
+                        existingTestIndex
+                    ] = newTest;
+                }
             }
         }
 
@@ -198,7 +340,6 @@ const getUserTests = async (req, res) => {
                 .status(404)
                 .json({ message: "No test results found for this user" });
         }
-
         res.status(200).json(userTests);
     } catch (error) {
         res.status(500).json({
@@ -209,6 +350,8 @@ const getUserTests = async (req, res) => {
 };
 
 module.exports = {
+    getUser,
+    updatePrescription,
     setupProfile,
     setupDailyCheck,
     getDailyCheckInfo,

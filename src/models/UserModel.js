@@ -1,47 +1,57 @@
 const bcrypt = require("bcrypt");
 const mongoose = require("mongoose");
 
-const preferenceSchema = new mongoose.Schema({
-    goal: {
-        type: String,
+const preferenceSchema = new mongoose.Schema(
+    {
+        goal: {
+            type: String,
+        },
+        frequency: {
+            type: String,
+        },
+        eyeCorrection: {
+            type: [String],
+        },
+        unit: {
+            type: String,
+        },
     },
-    frequency: {
-        type: String,
-    },
-    eyeCorrection: {
-        type: [String],
-    },
-    unit: {
-        type: String,
-    },
-});
+    { _id: false }
+);
 
-const glassesSchema = new mongoose.Schema({
-    left: {
-        type: String,
+const prescriptionInfoSchema = new mongoose.Schema(
+    {
+        testType: { type: String, required: true },
+        left: { type: String, required: true },
+        right: { type: String, required: true },
     },
-    right: {
-        type: String,
-    },
-});
+    { _id: false }
+);
 
-const contactLensSchema = new mongoose.Schema({
-    left: {
-        type: String,
+const prescriptionSchema = new mongoose.Schema(
+    {
+        appTest: { type: Boolean, required: true },
+        prescriptionDate: { type: Date, required: true },
+        manufacturer: { type: String, default: null },
+        productName: { type: String, default: null },
+        replacement: { type: String, default: null },
+        prescriptionInfo: { type: [prescriptionInfoSchema], required: true },
+        notes: { type: String, default: null },
     },
-    right: {
-        type: String,
-    },
-});
+    { _id: false }
+);
 
-const eyeWearSchema = new mongoose.Schema({
-    glasses: {
-        type: glassesSchema,
+const eyeWearSchema = new mongoose.Schema(
+    {
+        glasses: {
+            type: prescriptionSchema,
+        },
+        contactLens: {
+            type: prescriptionSchema,
+        },
     },
-    contactLens: {
-        type: contactLensSchema,
-    },
-});
+    { _id: false }
+);
 
 const userSchema = new mongoose.Schema(
     {
