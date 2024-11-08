@@ -2,6 +2,12 @@ const mongoose = require("mongoose");
 
 const resultSchema = new mongoose.Schema(
     {
+        testId: {
+            type: String,
+        },
+        testType: {
+            type: String,
+        },
         left: {
             type: String,
         },
@@ -14,17 +20,14 @@ const resultSchema = new mongoose.Schema(
 
 const testSchema = new mongoose.Schema(
     {
-        testId: {
-            type: String,
-        },
-        testTitle: {
-            type: String,
-        },
         date: {
             type: Date,
         },
+        appTest: {
+            type: Boolean,
+        },
         result: {
-            type: resultSchema,
+            type: [resultSchema],
         },
     },
     { _id: false }
@@ -39,9 +42,6 @@ const userHistorySchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true,
-    },
-    appTest: {
-        type: Boolean,
     },
     tests: {
         type: [testSchema],
