@@ -16,7 +16,7 @@ const router = express.Router();
 router.use(cors());
 router.use(express.json());
 
-router.route("/:userIdentifier").get(getUser);
+router.route("/info/:userIdentifier").get(getUser);
 
 router.route("/prescriptions").post(updatePrescription);
 
@@ -24,7 +24,7 @@ router.route("/setupProfile").post(setupProfile);
 
 router.route("/dailyCheck").post(setupDailyCheck);
 
-router.route("/dailyCheckInfo").get(getDailyCheckInfo);
+router.route("/dailyCheckInfo").post(getDailyCheckInfo);
 
 router.route("/visionHistory").post(saveTestResult);
 

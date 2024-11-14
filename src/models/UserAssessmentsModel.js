@@ -39,12 +39,6 @@ const dailyExerciseInfo = new mongoose.Schema({
 });
 
 const dailyAssessmentSchema = new mongoose.Schema({
-    assessmentId: {
-        type: mongoose.Schema.Types.ObjectId,
-        default: function () {
-            return new mongoose.Types.ObjectId();
-        },
-    },
     exerciseFelling: {
         type: String,
     },
