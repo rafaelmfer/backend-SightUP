@@ -23,18 +23,53 @@ const dailyExerciseInfo = new mongoose.Schema({
     eyesNow: {
         type: String,
     },
+    taskId: {
+        type: String,
+        required: true,
+    },
+    title: {
+        type: String,
+        required: true,
+    },
     category: {
         type: String,
+        required: true,
     },
-    exerciseName: {
+    motivation: {
         type: String,
+        required: true,
     },
-    exerciseTime: {
-        type: Date,
-        default: Date.now,
+    timeSchedule: {
+        type: String, // "HH:MM"
+        required: true,
+    },
+    duration: {
+        type: Number,
+        required: true,
+    },
+    eyeCondition: {
+        type: [String],
+        required: true,
+    },
+    advice: {
+        type: String,
+        required: true,
+    },
+    imageInstruction: {
+        type: String,
+        required: true,
+    },
+    video: {
+        type: String,
+        required: true,
+    },
+    finishTitle: {
+        type: String,
+        required: true,
     },
     done: {
         type: Boolean,
+        default: false,
     },
 });
 
