@@ -51,7 +51,7 @@ const HeroCard = ({ linkProposal }) => {
                     }}
                 >
                     <source
-                        src={require("../../assets/videos/hero_landing_page.mp4")}
+                        // src={require("../../assets/videos/hero_landing_page.mp4")}
                         type="video/mp4"
                     />
                     <img
