@@ -1,25 +1,40 @@
-import logo from "./logo.svg";
 import "./App.css";
+import React from "react";
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    useLocation,
+    Outlet,
+} from "react-router-dom";
+import { useMediaQuery, useTheme } from "@mui/material";
+import Onboarding from "./pages/OnBoarding";
+import FourOhFour from "./pages/FourOhFour";
 
-function App() {
+const Layout = () => {
+    const location = useLocation();
+    const noSidebarRoutes = ["/login", "/signup", "/"];
+    const theme = useTheme();
+    const isDesktop = useMediaQuery(theme.breakpoints.up(650));
+
     return (
         <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Learn React
-                </a>
-            </header>
+            <Outlet />
         </div>
     );
-}
+};
+
+const App = () => {
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<Layout />}>
+                    <Route index element={<Onboarding />} />
+                </Route>
+                <Route path="*" element={<FourOhFour />} />
+            </Routes>
+        </Router>
+    );
+};
 
 export default App;
