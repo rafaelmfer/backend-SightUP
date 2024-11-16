@@ -1,6 +1,9 @@
 const { User } = require("../models/UserModel");
 const { Daily } = require("../models/UserAssessmentsModel");
 const { UserHistory } = require("../models/UserHistoryModel");
+const { Task } = require("../models/TaskModel");
+
+const moment = require("moment-timezone");
 
 const getUser = async (req, res) => {
     try {
@@ -264,6 +267,180 @@ const getDailyCheckInfo = async (req, res) => {
     }
 };
 
+const getDailyExercises = async (req, res) => {
+    try {
+        const { userIdentifier } = req.params;
+
+        const filter = {};
+        if (userIdentifier.includes("@")) {
+            filter.userEmail = userIdentifier;
+        } else {
+            filter.userId = userIdentifier;
+        }
+
+        if (Object.keys(filter).length === 0) {
+            return res
+                .status(400)
+                .json({ message: "Please provide either userId or userEmail" });
+        }
+
+        const user = await User.findOne({ email: userIdentifier });
+
+        if (!user) {
+            return res.status(404).json({
+                message: "User not found",
+            });
+        }
+
+        const frequencyMap = {
+            "Once a day": 1,
+            "2 - 3 times per day": 3,
+            "4 - 6 times per day": 5,
+            "As many as I need": 6,
+            Nothing: 0,
+        };
+
+        // If there is no preference, 2 exercises will be assigned
+        const exerciseCount = frequencyMap[user.preferences?.frequency] || 2;
+
+        const today = moment
+            .tz(new Date(), "America/Vancouver")
+            .format("YYYY-MM-DD");
+
+        // First check if there is already a set of exercises
+        let dailyExercises = await Daily.findOne({
+            email: user.email,
+            dailyCheckDate: today,
+        });
+
+        if (!dailyExercises) {
+            const startTime = 9 * 60;
+            const endTime = 21 * 60;
+            const interval = Math.floor((endTime - startTime) / exerciseCount);
+
+            const formatTime = (minutes) => {
+                const totalHours = Math.floor(minutes / 60);
+                const mins = String(minutes % 60).padStart(2, "0");
+                const period = totalHours >= 12 ? "pm" : "am";
+                const hours = totalHours % 12 === 0 ? 12 : totalHours % 12;
+                return `${hours}:${mins} ${period}`;
+            };
+
+            // Create a new set of exercises
+            let index = 0;
+            const exercises = await Task.aggregate([
+                { $match: { type: "exercise" } },
+                { $sample: { size: exerciseCount } },
+            ]).then((exs) =>
+                exs.map((ex) => ({
+                    taskId: ex.taskId,
+                    title: ex.title,
+                    category: ex.category,
+                    motivation: ex.motivation,
+                    timeSchedule: formatTime(startTime + index++ * interval),
+                    duration: ex.duration,
+                    eyeCondition: ex.helps,
+                    advice: ex.advice,
+                    imageInstruction: ex.imageInstruction,
+                    video: ex.video,
+                    finishTitle: ex.finishTitle,
+                }))
+            );
+
+            dailyExercises = new Daily({
+                email: user.email,
+                dailyCheckDate: today,
+                dailyExerciseInfo: exercises,
+            });
+
+            await dailyExercises.save();
+        }
+
+        return res.json({
+            message: "Daily exercises retrieved",
+            exercises: dailyExercises.dailyExerciseInfo,
+        });
+    } catch (error) {
+        return res.status(500).json({
+            message: "Error fetching daily exercises",
+            error: error.message,
+        });
+    }
+};
+
+const updateDailyExercise = async (req, res) => {
+    try {
+        const { userIdentifier, exerciseId } = req.params;
+
+        if (!exerciseId) {
+            return res.status(400).json({
+                message: "Exercise ID is required to update completion status",
+            });
+        }
+
+        const filter = userIdentifier.includes("@")
+            ? { email: userIdentifier }
+            : { userId: userIdentifier };
+
+        const user = await User.findOne(filter);
+        if (!user) {
+            return res.status(404).json({
+                message: "User not found",
+            });
+        }
+
+        const today = moment
+            .tz(new Date(), "America/Vancouver")
+            .format("YYYY-MM-DD");
+
+        // Looks for "todays" exercises
+        const dailyExercises = await Daily.findOne({
+            email: user.email,
+            dailyCheckDate: today,
+        });
+
+        if (!dailyExercises) {
+            return res.status(404).json({
+                message: "No daily exercises found for today",
+            });
+        }
+
+        // First exercise that is not done
+        let exercise = dailyExercises.dailyExerciseInfo.find(
+            (ex) => ex.taskId === exerciseId && !ex.done
+        );
+
+        if (!exercise) {
+            exercise = dailyExercises.dailyExerciseInfo.find(
+                (ex) => ex.taskId === exerciseId
+            );
+            if (exercise && exercise.done) {
+                return res.status(400).json({
+                    message: "This exercise is already marked as completed",
+                });
+            } else {
+                return res.status(404).json({
+                    message: "Exercise not found in today's daily exercises",
+                });
+            }
+        }
+
+        exercise.done = true;
+
+        await dailyExercises.save();
+
+        return res.json({
+            message: "Exercise marked as completed",
+            updatedExercise: exercise,
+        });
+    } catch (error) {
+        return res.status(500).json({
+            message: "Error updating exercise completion",
+            error: error.message,
+        });
+    }
+};
+
 const saveTestResult = async (req, res) => {
     const { userId, userEmail, appTest, testId, testTitle, result } = req.body;
 
@@ -373,6 +550,8 @@ module.exports = {
     setupProfile,
     setupDailyCheck,
     getDailyCheckInfo,
+    getDailyExercises,
+    updateDailyExercise,
     saveTestResult,
     getUserTests,
 };

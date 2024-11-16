@@ -18,6 +18,30 @@ const taskSchema = new mongoose.Schema({
             return this.type === "test";
         },
     },
+    videoMode: {
+        touch: {
+            type: String,
+            required: true,
+        },
+        voice: {
+            type: String,
+            required: true,
+        },
+        smartwatch: {
+            type: String,
+            required: true,
+        },
+    },
+    videoEyes: {
+        right: {
+            type: String,
+            required: true,
+        },
+        left: {
+            type: String,
+            required: true,
+        },
+    },
     checkList: {
         type: [String],
         required: function () {
@@ -30,7 +54,10 @@ const taskSchema = new mongoose.Schema({
             return this.type === "test";
         },
     },
-    video: { type: String },
+    video: {
+        type: String,
+        required: true,
+    },
     images: { type: String },
     imageInstruction: { type: String },
     finishTitle: { type: String },
@@ -41,4 +68,7 @@ const taskSchema = new mongoose.Schema({
     motivation: { type: String },
 });
 
-module.exports = mongoose.model("Task", taskSchema);
+const Task = mongoose.model("Task", taskSchema);
+module.exports = {
+    Task,
+};

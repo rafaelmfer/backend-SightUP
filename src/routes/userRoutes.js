@@ -8,6 +8,8 @@ const {
     setupProfile,
     setupDailyCheck,
     getDailyCheckInfo,
+    getDailyExercises,
+    updateDailyExercise,
     saveTestResult,
     getUserTests,
 } = require("../controllers/userController");
@@ -25,6 +27,12 @@ router.route("/setupProfile").post(setupProfile);
 router.route("/dailyCheck").post(setupDailyCheck);
 
 router.route("/dailyCheckInfo").post(getDailyCheckInfo);
+
+router.route("/dailyExercises/:userIdentifier").get(getDailyExercises);
+
+router
+    .route("/dailyExercises/:userIdentifier/:exerciseId")
+    .put(updateDailyExercise);
 
 router.route("/visionHistory").post(saveTestResult);
 
