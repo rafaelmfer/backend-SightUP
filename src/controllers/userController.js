@@ -371,10 +371,17 @@ const getDailyExercises = async (req, res) => {
 const updateDailyExercise = async (req, res) => {
     try {
         const { userIdentifier, exerciseId } = req.params;
+        const { feeling } = req.body;
 
         if (!exerciseId) {
             return res.status(400).json({
                 message: "Exercise ID is required to update completion status",
+            });
+        }
+
+        if (!feeling) {
+            return res.status(400).json({
+                message: "Felling is required to update the exercise",
             });
         }
 
@@ -393,7 +400,6 @@ const updateDailyExercise = async (req, res) => {
             .tz(new Date(), "America/Vancouver")
             .format("YYYY-MM-DD");
 
-        // Looks for "todays" exercises
         const dailyExercises = await Daily.findOne({
             email: user.email,
             dailyCheckDate: today,
@@ -405,27 +411,26 @@ const updateDailyExercise = async (req, res) => {
             });
         }
 
-        // First exercise that is not done
-        let exercise = dailyExercises.dailyExerciseInfo.find(
-            (ex) => ex.taskId === exerciseId && !ex.done
+        // Find the first incomplete exercise
+        const exercise = dailyExercises.dailyExerciseInfo.find(
+            (ex) => ex.taskId === exerciseId
         );
 
         if (!exercise) {
-            exercise = dailyExercises.dailyExerciseInfo.find(
-                (ex) => ex.taskId === exerciseId
-            );
-            if (exercise && exercise.done) {
-                return res.status(400).json({
-                    message: "This exercise is already marked as completed",
-                });
-            } else {
-                return res.status(404).json({
-                    message: "Exercise not found in today's daily exercises",
-                });
-            }
+            return res.status(404).json({
+                message: "Exercise not found in today's daily exercises",
+            });
         }
 
+        if (exercise.done) {
+            return res.status(400).json({
+                message: "This exercise is already marked as completed",
+            });
+        }
+
+        // Update the exercise and felling
         exercise.done = true;
+        dailyExercises.exerciseFelling = feeling;
 
         await dailyExercises.save();
 
