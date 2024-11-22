@@ -36,6 +36,7 @@ const CustomButtonStyled = styled(Button)(
         ...(buttontype === "primary" && {
             backgroundColor: theme.palette.primary.main,
             color: theme.palette.neutrals.white,
+            border: `2px solid ${theme.palette.secondary[600]}`,
             "& .MuiButton-startIcon, & .MuiButton-endIcon": {
                 filter: "brightness(0) invert(1)",
             },
@@ -44,7 +45,8 @@ const CustomButtonStyled = styled(Button)(
                     filter: "brightness(0) saturate(100%) invert(12%) sepia(84%) saturate(3903%) hue-rotate(356deg) brightness(91%) contrast(109%)",
                 },
                 backgroundColor: theme.palette.primary[300],
-                color: theme.palette.primary[900],
+                color: theme.palette.primary[600],
+                border: `2px solid ${theme.palette.primary[600]}`,
                 boxShadow: "none",
             },
             "&.Mui-disabled": {
