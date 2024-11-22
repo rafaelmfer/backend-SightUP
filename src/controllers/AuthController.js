@@ -23,11 +23,6 @@ const generateToken = (email, id) => {
     return token;
 };
 
-const generateObjectIdFromUid = async (uid) => {
-    const hash = await bcrypt.hash(uid, 10); // Generates hash of uid
-    return hash.replace(/[^a-f0-9]/gi, "").substring(0, 24);
-};
-
 /**
  * Register Endpoint - Registers a new user to the app.
  * The password is hashed before saving it to the database.

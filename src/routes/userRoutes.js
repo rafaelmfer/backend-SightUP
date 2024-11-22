@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-//const { authenticateJWT } = require("../controllers/AuthController");
+const { authenticateJWT } = require("../controllers/AuthController");
 
 const {
     getUser,
@@ -18,24 +18,26 @@ const router = express.Router();
 router.use(cors());
 router.use(express.json());
 
-router.route("/info/:userIdentifier").get(getUser);
+router.route("/info/:userIdentifier").get(authenticateJWT, getUser);
 
-router.route("/prescriptions").post(updatePrescription);
+router.route("/prescriptions").post(authenticateJWT, updatePrescription);
 
-router.route("/setupProfile").post(setupProfile);
+router.route("/setupProfile").post(authenticateJWT, setupProfile);
 
-router.route("/dailyCheck").post(setupDailyCheck);
+router.route("/dailyCheck").post(authenticateJWT, setupDailyCheck);
 
-router.route("/dailyCheckInfo").post(getDailyCheckInfo);
+router.route("/dailyCheckInfo").post(authenticateJWT, getDailyCheckInfo);
 
-router.route("/dailyExercises/:userIdentifier").get(getDailyExercises);
+router
+    .route("/dailyExercises/:userIdentifier")
+    .get(authenticateJWT, getDailyExercises);
 
 router
     .route("/dailyExercises/:userIdentifier/:exerciseId")
-    .put(updateDailyExercise);
+    .put(authenticateJWT, updateDailyExercise);
 
-router.route("/visionHistory").post(saveTestResult);
+router.route("/visionHistory").post(authenticateJWT, saveTestResult);
 
-router.route("/visionHistory/:user").get(getUserTests);
+router.route("/visionHistory/:user").get(authenticateJWT, getUserTests);
 
 module.exports = router;
