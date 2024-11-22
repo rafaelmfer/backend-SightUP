@@ -4,13 +4,10 @@ import TextFieldArea from "../textfields/TextFieldArea";
 import TextFieldRegular from "../textfields/TextFieldRegular";
 import CustomButton from "../buttons/CustomButton";
 
-export default function ContactUs({ id, sx }) {
+export default function _ContactUs({ id, sx }) {
     const theme = useTheme();
     const isDesktop = useMediaQuery(theme.breakpoints.up("desktop"));
-
     const [name, setName] = useState("");
-    const [companyName, setCompanyName] = useState("");
-    const [phone, setPhone] = useState("");
     const [email, setEmail] = useState("");
     const [description, setDescription] = useState("");
 
@@ -22,11 +19,11 @@ export default function ContactUs({ id, sx }) {
                 width: "100%",
                 display: "flex",
                 flexDirection: "column",
-                gap: "32px",
+                gap: "48px",
                 alignItems: "center",
                 fontWeight: "bold",
-                paddingTop: isDesktop ? "80px" : "32px",
-                paddingBottom: isDesktop ? "80px" : "32px",
+                paddingTop: isDesktop ? "80px" : "80px",
+                paddingBottom: isDesktop ? "80px" : "80px",
                 ...sx,
             }}
         >
@@ -34,17 +31,15 @@ export default function ContactUs({ id, sx }) {
                 variant="h3"
                 align="center"
                 sx={{
-                    ...theme.typography.h3,
+                    //...theme.typography.h3,
+                    ...theme.typography.larken_h2,
                     fontWeight: 600,
                     [theme.breakpoints.up("desktop")]: {
-                        fontSize: "40px",
+                        fontSize: "36px",
                     },
                 }}
             >
                 Contact us
-            </Typography>
-            <Typography variant="p" textAlign="center">
-                We will get in touch with you shortly!
             </Typography>
 
             <Box
@@ -60,30 +55,11 @@ export default function ContactUs({ id, sx }) {
                     label="Name"
                     id="Name"
                     placeholder="Full name"
-                    star={true}
+                    star={false}
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     sx={{ width: "100%", fontWeight: "bold" }}
-                />
-
-                <TextFieldRegular
-                    label="Company Name"
-                    id="CompanyName"
-                    placeholder="Company Name"
-                    value={companyName}
-                    onChange={(e) => setCompanyName(e.target.value)}
-                    star={true}
-                    sx={{ width: "100%", fontWeight: "bold" }}
-                />
-
-                <TextFieldRegular
-                    label="Phone"
-                    id="CompanyName"
-                    placeholder="Phone No."
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    sx={{ width: "100%", fontWeight: "bold" }}
-                />
+                /> 
 
                 <TextFieldRegular
                     label="Email"
@@ -91,7 +67,7 @@ export default function ContactUs({ id, sx }) {
                     placeholder="Email Address"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    star={true}
+                    star={false}
                     sx={{ width: "100%", fontWeight: "bold" }}
                 />
 
@@ -110,9 +86,14 @@ export default function ContactUs({ id, sx }) {
                     buttontype="primary"
                     buttonVariant="text"
                     isOutlined
-                    sx={{ margin: "auto" }}
+                    //sx={{ margin: "auto" }}
+                    sx={{ width: isDesktop ? "fit-content" : "100%",
+                        margin: "auto",
+                        marginTop: "32px",
+                        padding: "0px 100px"
+                     }}
                 >
-                    Send Message
+                    Send 
                 </CustomButton>
             </Box>
         </Box>

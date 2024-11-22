@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import theme from "../../theme/theme";
+import _theme from "../../theme/theme";
 
 const CustomTypography = ({ text, variant, sx, ...props }) => {
     const words = text.split(" ");
@@ -10,7 +10,7 @@ const CustomTypography = ({ text, variant, sx, ...props }) => {
         <Typography
             variant={variant}
             sx={{
-                ...theme.typography[variant],
+                ..._theme.typography[variant],
                 ...sx,
             }}
             {...props}
@@ -38,7 +38,7 @@ export default function Cards({ matches, sx }) {
                 variant="h3"
                 sx={{
                     fontWeight: 600,
-                    [theme.breakpoints.up("desktop")]: {
+                    [_theme.breakpoints.up("desktop")]: {
                         fontSize: "40px",
                     },
                 }}
@@ -77,7 +77,7 @@ export default function Cards({ matches, sx }) {
                         align="center"
                         sx={{
                             fontWeight: 600,
-                            color: theme.palette.primary.main,
+                            color: _theme.palette.primary.main,
                             gridColumn: "1/2",
                             gridRow: "1/2",
                         }}
@@ -134,7 +134,7 @@ export default function Cards({ matches, sx }) {
                         align="center"
                         sx={{
                             fontWeight: 600,
-                            color: theme.palette.primary.main,
+                            color: _theme.palette.primary.main,
                             gridColumn: "2/3",
                             gridRow: "1/2",
                         }}
@@ -190,7 +190,7 @@ export default function Cards({ matches, sx }) {
                         align="center"
                         sx={{
                             fontWeight: 600,
-                            color: theme.palette.primary.main,
+                            color: _theme.palette.primary.main,
                             gridColumn: "3/4",
                             gridRow: "1/2",
                         }}
@@ -244,7 +244,7 @@ export default function Cards({ matches, sx }) {
                         align="center"
                         sx={{
                             fontWeight: 600,
-                            color: theme.palette.primary.main,
+                            color: _theme.palette.primary.main,
                             gridColumn: "4/5",
                             gridRow: "1/2",
                         }}

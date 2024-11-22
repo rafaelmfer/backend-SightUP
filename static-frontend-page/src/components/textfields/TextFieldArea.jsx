@@ -40,7 +40,7 @@ const TextAreaElement = styled("textarea")(
         borderRadius: "8px",
         color: disabled
             ? theme.palette.neutrals.gray300
-            : theme.palette.neutrals.black,
+            : theme.palette.neutrals.silver,
         background: disabled ? theme.palette.neutrals.gray50 : "#FFFFFF",
         border: error ? "3px solid" : "1px solid",
         borderColor: error
@@ -49,12 +49,12 @@ const TextAreaElement = styled("textarea")(
               ? theme.palette.neutrals.gray300
               : focused
                 ? theme.palette.secondary[500]
-                : theme.palette.neutrals.black,
-        resize: "vertical",
+                : theme.palette.secondary[960],
+        resize: "none",
         transition: "border-color 0s ease, padding 0s ease",
         "&:hover": {
             padding: disabled ? "8px 4px 4px 16px" : "6px 1.5px 1.5px 14px",
-            marginBottom: disabled ? "0px" : "0.5px",
+            marginBottom: disabled ? "0px" : "1.5px",
             border: disabled ? "1px solid" : "3px solid",
             borderColor: error
                 ? theme.palette.error[300]
@@ -68,14 +68,14 @@ const TextAreaElement = styled("textarea")(
             borderColor: error
                 ? theme.palette.error[300]
                 : theme.palette.secondary[500],
-            color: theme.palette.neutrals.black,
+            color: theme.palette.neutrals.silver,
         },
         "&:disabled": {
-            color: theme.palette.neutrals.gray300,
+            color: theme.palette.neutrals.silver,
         },
         "&::placeholder": {
             opacity: 1,
-            color: theme.palette.neutrals.gray300,
+            color: theme.palette.neutrals.silver,
         },
     })
 );
@@ -137,10 +137,10 @@ const TextFieldArea = ({
         <Box
             class="flex flex-col"
             sx={sx}
-            aria-disabled={disabled} // ARIA attribute to indicate disabled state
-            aria-invalid={error} // ARIA attribute to indicate error state
+            aria-disabled={disabled} 
+            aria-invalid={error} 
         >
-            <Label htmlFor={id}>{label}</Label>
+            <Label htmlFor={"id"}>{label}</Label>
             <TextAreaElement
                 id={id}
                 placeholder={placeholder}
@@ -153,22 +153,10 @@ const TextFieldArea = ({
                 onBlur={() => setFocused(false)}
                 onMouseEnter={() => setHovered(true)}
                 onMouseLeave={() => setHovered(false)}
-                aria-disabled={disabled} // ARIA attribute to indicate disabled state
-                aria-invalid={error} // ARIA attribute to indicate error state
-                aria-describedby={`${id}-hint`} // Associate hint with textarea
+                aria-disabled={disabled} 
+                aria-invalid={error}
+                aria-describedby={`${id}-hint`} 
             />
-
-            <Hint
-                id={`${id}-hint`}
-                error={error}
-                focused={focused && !disabled}
-                hovered={hovered && !focused && !disabled}
-                disabled={disabled}
-                role="status" // ARIA attribute to indicate the role of the element
-                aria-live="polite" // ARIA attribute for polite notification of changes
-            >
-                {value.length}/{hint} characters
-            </Hint>
         </Box>
     );
 };

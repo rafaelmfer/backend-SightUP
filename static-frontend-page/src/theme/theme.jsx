@@ -16,17 +16,17 @@ import { createTheme } from "@mui/material/styles";
 const theme = createTheme({
     palette: {
         primary: {
-            main: "#EF6461", // use theme.pallete.primary.main
+            main: "#2C76A8", 
             50: "#FFFFFF",
-            100: "#FEF5F5", //use theme.pallete.primary[100]
+            100: "#FEF5F5", 
             200: "#FDE9E9",
-            300: "#FBD8D8",
+            300: "#ECF5FD",
             400: "#F9C2C1",
             500: "#F6A8A6",
-            600: "#F38886",
+            600: "#4190DA",
             800: "#E83532",
-            900: "#8F0A06",
-            light: "#FBFBFB", // Background color
+            900: "#05213C",
+            light: "#FBFBFB", 
             contrastText: "#0B0A0A",
         },
         secondary: {
@@ -40,6 +40,7 @@ const theme = createTheme({
             800: "#0B4A86",
             900: "#05213C",
             950: "#041A2F",
+            960: "#D5D9DE",
             contrastText: "#FFFEFE",
         },
         error: {
@@ -66,6 +67,7 @@ const theme = createTheme({
             white: "#FFFEFE",
             black: "#0B0A0A",
             background: "#FBFBFB",
+            silver: "#77818A",
             divider: "#DFDFDF",
             gray50: "#F8F8F8",
             gray100: "#EEEEEE",
@@ -76,18 +78,65 @@ const theme = createTheme({
             purple: "#793BB7",
             light_purple: "#EEDDFF",
             tabs: "#464646",
-            //     blue: "#3065B4",
-            //     light_blue: "#D0E3FF",
-            //     green: "#349025",
-            //     light_green: "#DBF9D6",
-            //     orange: "#DC6A1E",
-            //     light_orange: "#FBE4D8",
-            //     red: "#DF263C",
-            //     light_red: "#FCDFE2",
         },
     },
     typography: {
-        fontFamily: "IBM Plex Sans, sans-serif, ui-sans-serif, system-ui",
+        fontFamily: "Lato, sans-serif, ui-sans-serif, system-ui",
+        larken_h1: {
+            fontFamily: "Larken, sans-serif",
+            fontSize: "2.027rem",
+            fontWeight: 600,
+            lineHeight: "120%",
+        },
+        larken_h2: {
+            fontFamily: "Larken, sans-serif",
+            fontSize: "1.802rem",
+            fontWeight: 600,
+            lineHeight: "120%",
+        },
+        larken_h3: {
+            fontFamily: "Larken, sans-serif",
+            fontSize: "1.602rem",
+            fontWeight: 600,
+            lineHeight: "120%",
+        },
+        larken_h4: {
+            fontFamily: "Larken, sans-serif",
+            fontSize: "1.424rem",
+            fontWeight: 500,
+            lineHeight: "120%",
+        },
+        larken_h5: {
+            fontFamily: "Larken, sans-serif",
+            fontSize: "1.266rem",
+            fontWeight: 400,
+            lineHeight: "120%",
+        },
+        larken_h6: {
+            fontFamily: "Larken, sans-serif",
+            fontSize: "1.125rem",
+            fontWeight: 400,
+            lineHeight: "120%",
+        },
+        larken_p: {
+            fontFamily: "Larken, sans-serif",
+            fontSize: "1rem",
+            fontWeight: 400,
+            lineHeight: "150%",
+        },
+        larken_small1: {
+            fontFamily: "Larken, sans-serif",
+            fontSize: "0.889rem",
+            fontWeight: 400,
+            lineHeight: "150%",
+        },
+        larken_small2: {
+            fontFamily: "Larken, sans-serif",
+            fontSize: "0.79rem",
+            fontWeight: 400,
+            lineHeight: "120%",
+        },
+
         h1: { fontSize: "2.027rem", fontWeight: 600, lineHeight: "120%" },
         h2: { fontSize: "1.802rem", fontWeight: 600, lineHeight: "120%" },
         h3: { fontSize: "1.602rem", fontWeight: 600, lineHeight: "120%" },
@@ -95,8 +144,16 @@ const theme = createTheme({
         h5: { fontSize: "1.266rem", fontWeight: 400, lineHeight: "120%" },
         h6: { fontSize: "1.125rem", fontWeight: 400, lineHeight: "120%" },
         p: { fontSize: "1rem", fontWeight: 400, lineHeight: "150%" },
-        small1: { fontSize: "0.889rem", fontWeight: 400, lineHeight: "150%" },
-        small2: { fontSize: "0.79rem", fontWeight: 400, lineHeight: "120%" },
+        small1: {
+            fontSize: "0.889rem",
+            fontWeight: 400,
+            lineHeight: "150%",
+        },
+        small2: {
+            fontSize: "0.79rem",
+            fontWeight: 400,
+            lineHeight: "120%",
+        },
     },
     breakpoints: {
         values: {
@@ -108,7 +165,6 @@ const theme = createTheme({
         MuiTypography: {
             defaultProps: {
                 variantMapping: {
-                    // Map the new variant to render a <h1> by default
                     h1: "h1",
                     h2: "h2",
                     h3: "h3",
@@ -122,7 +178,6 @@ const theme = createTheme({
             },
         },
     },
-    // Puedes añadir más personalizaciones aquí
 });
 
 export default theme;

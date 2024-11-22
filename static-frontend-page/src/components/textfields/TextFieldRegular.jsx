@@ -47,15 +47,16 @@ const CustomTextField = styled(TextField)(({ theme, disabled }) => ({
         backgroundColor: disabled
             ? theme.palette.neutrals.gray50
             : theme.palette.primary[50],
-        color: "inherit",
+        color: theme.palette.neutrals.silver,
         "& .MuiOutlinedInput-notchedOutline": {
             borderWidth: "1px",
-            borderColor: theme.palette.neutrals.black,
+            borderColor: theme.palette.secondary[960],
+            color: theme.palette.neutrals.silver,
         },
         "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
             borderColor: theme.palette.secondary[500],
             borderWidth: "3px",
-            color: theme.palette.neutrals.black,
+            color: theme.palette.neutrals.silver,
         },
         "&.Mui-error .MuiOutlinedInput-notchedOutline": {
             borderColor: theme.palette.error[300],
@@ -79,7 +80,7 @@ const CustomTextField = styled(TextField)(({ theme, disabled }) => ({
         },
         "&::placeholder": {
             opacity: 1,
-            color: theme.palette.neutrals.gray300,
+            color: theme.palette.neutrals.silver,
         },
     },
 }));
@@ -89,7 +90,7 @@ const Adornment = styled(InputAdornment)(({ theme }) => ({
     "& img": {
         maxWidth: "24px",
         height: "24px",
-        cursor: "pointer", // Add cursor pointer for clickable icon
+        cursor: "pointer",
     },
 }));
 
@@ -187,8 +188,8 @@ const TextFieldRegular = ({
     return (
         <Box
             sx={sx}
-            aria-disabled={disabled} // ARIA attribute to indicate disabled state
-            aria-invalid={error} // ARIA attribute to indicate error state
+            aria-disabled={disabled} 
+            aria-invalid={error}
         >
             {label && (
                 <Label htmlFor={id}>
@@ -253,7 +254,7 @@ const TextFieldRegular = ({
                     ),
                 }}
                 variant="outlined"
-                aria-describedby={`${id}-hint`} // Reference to hint for accessibility
+                aria-describedby={`${id}-hint`} 
             />
 
             {hint && (
@@ -263,8 +264,8 @@ const TextFieldRegular = ({
                     focused={focused && !disabled}
                     hovered={hovered && !focused && !disabled}
                     disabled={disabled}
-                    role="status" // ARIA attribute to indicate the role of the element
-                    aria-live="polite" // ARIA attribute for polite notification of changes
+                    role="status" 
+                    aria-live="polite" 
                 >
                     {getHintText()}
                 </Hint>

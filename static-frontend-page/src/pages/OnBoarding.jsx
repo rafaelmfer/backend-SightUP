@@ -3,12 +3,17 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import Team from "../components/landing-page/Team";
 import BusinessModel from "../components/landing-page/BusinessModel";
 import Proposal from "../components/landing-page/Proposal";
-import ContactUs from "../components/landing-page/ContactUs";
+import ContactUs from "../components/landing-page/_ContactUs";
 import Cards from "../components/landing-page/Cards";
-import Menu from "../components/landing-page/Menu";
+import OurFeatures from "../components/landing-page/OurFeatures";
+import OurTeam from "../components/landing-page/OurTeam";
+import _Menu from "../components/landing-page/_Menu";
 import Footer from "../components/landing-page/Footer";
 import HeroCard from "../components/landing-page/HeroCard";
 import Carousel from "../components/landing-page/Carousel";
+import MobileImages from "../components/landing-page/MobileImages";
+import ClearVision from "../components/landing-page/ClearVision";
+import SignupVideo from "../components/landing-page/SignupVideo";
 
 export default function Onboarding() {
     const theme = useTheme();
@@ -19,55 +24,60 @@ export default function Onboarding() {
 
     return (
         <main className="landing-page bg-neutrals-background items-center">
-            <Menu matches={isMobile} linkProposal={proposalLink} />
-            <HeroCard linkProposal={proposalLink} />
-            <Cards
+            <_Menu matches={isMobile} linkProposal={proposalLink} />
+
+            <MobileImages
+                id="solutions"
                 matches={isMobile}
                 sx={{
-                    marginTop: isMobile ? "32px" : "80px",
-                    paddingLeft: "16px",
-                    paddingRight: "16px",
+                    paddingLeft: "20px",
+                    paddingRight: "20px",
                 }}
             />
-            <Carousel
-                id="solutions"
+
+            <OurFeatures
+                id="features"
+                matches={isMobile}
                 sx={{
-                    paddingTop: isMobile ? "32px" : "80px",
+                    paddingLeft: "20px",
+                    paddingRight: "20px",
                 }}
             />
+
+            <SignupVideo
+                id="signupVideo"
+                matches={isMobile}
+                sx={{
+                    paddingLeft: "20px",
+                    paddingRight: "20px",
+                }}
+            />
+
+            <ClearVision
+                id="clearVision"
+                matches={isMobile}
+                sx={{
+                    paddingLeft: "8px",
+                    paddingRight: "8px",
+                }}
+            />
+
             <Team
                 id="team"
                 sx={{
-                    paddingTop: isMobile ? "32px" : "80px",
-                    paddingLeft: "16px",
-                    paddingRight: "16px",
+                    paddingTop: isMobile ? "80px" : "112px",
+                    paddingBottom: isMobile ? "80px" : "112px",
+                    paddingLeft: "20px",
+                    paddingRight: "20px",
                 }}
             />
-            <BusinessModel
-                id="business"
-                matches={isMobile}
-                sx={{
-                    marginTop: isMobile ? "32px" : "80px",
-                    paddingLeft: "16px",
-                    paddingRight: "16px",
-                }}
-            />
-            <Proposal
-                id="proposal"
-                matches={isMobile}
-                linkProposal={proposalLink}
-                sx={{
-                    paddingTop: isMobile ? "32px" : "80px",
-                    paddingLeft: isMobile ? "16px" : "3%",
-                    paddingRight: isMobile ? "16px" : "3%",
-                }}
-            />
+
             <ContactUs
                 id="contact"
                 sx={{
-                    marginTop: isMobile ? "32px" : "80px",
-                    paddingLeft: "16px",
-                    paddingRight: "16px",
+                    marginTop: isMobile ? "32px" : "0px",
+                    paddingLeft: "20px",
+                    paddingRight: "20px",
                 }}
             />
             <Footer matches={isMobile} />
