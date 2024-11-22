@@ -196,6 +196,12 @@ const setupDailyCheck = async (req, res) => {
                     existDaily.dailyCheckInfo?.condition;
                 updateObject.$set["dailyCheckInfo.causes"] =
                     dailyCheckInfo.causes || existDaily.dailyCheckInfo?.causes;
+
+                updateObject.$set["dailyCheckInfo.done"] =
+                    existDaily.dailyCheckInfo?.done === true ||
+                    dailyCheckInfo.done === true
+                        ? true
+                        : false;
             }
 
             if (dailyExerciseInfo) {
