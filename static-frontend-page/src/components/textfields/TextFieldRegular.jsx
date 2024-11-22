@@ -15,6 +15,7 @@ const Label = styled("label")(({ theme }) => ({
     alignItems: "center",
     color: theme.palette.neutrals.black,
     marginBottom: "4px",
+    ...theme.typography.p,
 }));
 
 const Hint = styled("p")(({ theme, error, focused, hovered, disabled }) => {

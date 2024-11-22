@@ -12,10 +12,6 @@ import Onboarding from "./pages/OnBoarding";
 import FourOhFour from "./pages/FourOhFour";
 
 const Layout = () => {
-    const location = useLocation();
-    const noSidebarRoutes = ["/login", "/signup", "/"];
-    const theme = useTheme();
-    const isDesktop = useMediaQuery(theme.breakpoints.up(650));
 
     return (
         <div className="App">

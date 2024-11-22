@@ -4,7 +4,7 @@ import TextFieldArea from "../textfields/TextFieldArea";
 import TextFieldRegular from "../textfields/TextFieldRegular";
 import CustomButton from "../buttons/CustomButton";
 
-export default function _ContactUs({ id, sx }) {
+export default function ContactUs({ id, sx }) {
     const theme = useTheme();
     const isDesktop = useMediaQuery(theme.breakpoints.up("desktop"));
     const [name, setName] = useState("");
@@ -31,7 +31,6 @@ export default function _ContactUs({ id, sx }) {
                 variant="h3"
                 align="center"
                 sx={{
-                    //...theme.typography.h3,
                     ...theme.typography.larken_h2,
                     fontWeight: 600,
                     [theme.breakpoints.up("desktop")]: {
@@ -72,9 +71,9 @@ export default function _ContactUs({ id, sx }) {
                 />
 
                 <TextFieldArea
-                    label="Description"
-                    id="description"
-                    placeholder="Text here"
+                    label="Message"
+                    id="message"
+                    placeholder="Type your message here..."
                     hint={200}
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
@@ -86,7 +85,6 @@ export default function _ContactUs({ id, sx }) {
                     buttontype="primary"
                     buttonVariant="text"
                     isOutlined
-                    //sx={{ margin: "auto" }}
                     sx={{ width: isDesktop ? "fit-content" : "100%",
                         margin: "auto",
                         marginTop: "32px",

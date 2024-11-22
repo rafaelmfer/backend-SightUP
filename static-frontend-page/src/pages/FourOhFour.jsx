@@ -11,7 +11,7 @@ const FourOhFour = () => {
                 <p className="text-p404 text-center text-neutrals-black ">
                     Take me back to{" "}
                     <Link to={"/"} className="text-main-600 underline ">
-                        bondwork.ca
+                        sightup.ca
                     </Link>
                 </p>
             </div>

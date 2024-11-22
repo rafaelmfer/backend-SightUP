@@ -3,9 +3,10 @@ import homeIcon from "../../assets/icons/mobiles.png";
 import facesLeft from "../../assets/icons/faces_left.svg";
 import facesRight from "../../assets/icons/faces_right.svg";
 
-export default function MobileImages({ id, matches, sx }) {
+export default function MobileImages({ id, sx }) {
     const theme = useTheme();
-    const isDesktop = useMediaQuery(theme.breakpoints.up("desktop"));
+    const isMobile = useMediaQuery(theme.breakpoints.down("desktop"));
+    
     return (
         <Box
             id={id}
@@ -17,14 +18,14 @@ export default function MobileImages({ id, matches, sx }) {
                 flexDirection: "column",
                 alignItems: "center",
                 fontWeight: "bold",
-                paddingTop: isDesktop ? "111px" : "136px",
+                paddingTop: isMobile ? "136px" : "111px",
                 ...sx,
             }}
         >
             <Box
                 sx={{
                     position: "absolute",
-                    top: "5%",
+                    top: "10%",
                     width: "100%",
                     maxWidth: "1100px",
                     height: "100%",
@@ -39,7 +40,7 @@ export default function MobileImages({ id, matches, sx }) {
                         position: "sticky",
                         left: "0px",
                         width: "18%",
-                        top: matches ? "100px" : "70px",
+                        top: isMobile ? "100px" : "70px",
                         height: "fit-content",
                     }}
                 />
@@ -50,7 +51,7 @@ export default function MobileImages({ id, matches, sx }) {
                         left: "0px",
                         width: "14%",
                         paddingTop: "50px",
-                        top: matches ? "100px" : "70px",
+                        top: isMobile ? "100px" : "70px",
                         height: "fit-content",
                     }}
                 />
@@ -75,9 +76,9 @@ export default function MobileImages({ id, matches, sx }) {
                 zIndex="2"
                 sx={{
                     ...theme.typography.p,
-                    fontSize: isDesktop ? "20px" : "16px",
+                    fontSize: isMobile ? "16px" : "20px",
                     paddingTop: "20px",
-                    paddingBottom: isDesktop ? "89px" : "127px",
+                    paddingBottom: isMobile ? "127px" : "89px",
                 }}
             >
                 An-all-in-one vision care mobile app offering
@@ -100,7 +101,7 @@ export default function MobileImages({ id, matches, sx }) {
                 <img
                     src={homeIcon}
                     style={{
-                        width: matches ? "100%" : "90%",
+                        width: isMobile ? "100%" : "90%",
                         maxWidth: "675px",
                     }}
                 />

@@ -2,22 +2,16 @@ import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, Typography, Drawer, List, ListItem } from "@mui/material";
 import CustomButton from "../buttons/CustomButton";
-import logo from "../../assets/icons/logo.svg";
-import LoginIcon from "../../assets/icons/login-blue-secondary.svg";
-import LoginRedIcon from "../../assets/icons/login-orange-primary.svg";
-import LineIcon from "../../assets/icons/Line.svg";
+import sightUpLogo from "../../assets/icons/sighupLogo.svg";
+import logoOnly from "../../assets/icons/logoOnly.svg";
 import theme from "../../theme/theme";
-import { Player } from "@lottiefiles/react-lottie-player"; // Import Lottie Player
-import menuAnimation from "../../assets/animations/menu-default.json"; // Import your Lottie animation
+import { Player } from "@lottiefiles/react-lottie-player";
+import menuAnimation from "../../assets/animations/menu-default.json";
 
-export default function Menu({ matches, linkProposal }) {
+export default function _Menu({ matches, linkProposal }) {
     const navigate = useNavigate();
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-    const playerRef = useRef(null); // Reference to control the Lottie animation
-
-    const handleBtnLogin = () => {
-        navigate("/login");
-    };
+    const playerRef = useRef(null);
 
     const handleClick = (event, targetId) => {
         event.preventDefault();
@@ -36,11 +30,11 @@ export default function Menu({ matches, linkProposal }) {
         }
         setIsDrawerOpen(open);
         if (open) {
-            playerRef.current.setPlayerSpeed(1); // Set playback rate to normal
-            playerRef.current.play(); // Play opening animation
+            playerRef.current.setPlayerSpeed(1);
+            playerRef.current.play();
         } else {
-            playerRef.current.setPlayerSpeed(-1); // Set playback rate to reverse
-            playerRef.current.play(); // Play closing animation
+            playerRef.current.setPlayerSpeed(-1);
+            playerRef.current.play();
         }
     };
 
@@ -55,9 +49,7 @@ export default function Menu({ matches, linkProposal }) {
                 {[
                     { text: "Solutions", id: "solutions" },
                     { text: "Team", id: "team" },
-                    { text: "Business Model", id: "business" },
-                    { text: "Proposal", id: "proposal" },
-                    { text: "Contact Us", id: "contact" },
+                    { text: "Contact", id: "contact" },
                 ].map(({ text, id }) => (
                     <ListItem
                         button
@@ -69,8 +61,8 @@ export default function Menu({ matches, linkProposal }) {
                             paddingLeft: "8px",
                             paddingTop: "12px",
                             paddingBottom: "12px",
-                            marginLeft: "24px",
-                            marginRight: "24px",
+                            marginLeft: "80px",
+                            marginRight: "80px",
                             "&:hover": {
                                 backgroundColor: theme.palette.primary[200],
                             },
@@ -97,39 +89,17 @@ export default function Menu({ matches, linkProposal }) {
                 top: "0px",
                 left: "0px",
                 zIndex: 10,
-                padding: matches ? "12px 2px 12px 12px" : "12px 44px",
+                padding: matches ? "12px 24px 12px 24px" : "12px 40px",
             }}
         >
-            <img src={logo} alt="Logo" height={"42px"} />
+            {matches ? (
+                <img src={logoOnly} alt="Logo" height={"42px"} />
+            ) : (
+                <img src={sightUpLogo} alt="Logo" height={"42px"} />
+            )}
 
             {matches ? (
                 <Box className="flex items-center mr-1">
-                    <Box
-                        className="flex items-center gap-2"
-                        sx={{ padding: "0px 10px" }}
-                    >
-                        <a href="/login" className="flex items-center gap-2">
-                            <img
-                                src={LoginRedIcon}
-                                alt="Logo"
-                                height={"42px"}
-                            />
-                            <Typography
-                                variant="p"
-                                sx={{
-                                    ...theme.typography.p,
-                                    fontWeight: 600,
-                                    color: theme.palette.primary.main,
-                                }}
-                            >
-                                Login
-                            </Typography>
-                        </a>
-                    </Box>
-                    <Box>
-                        <img src={LineIcon} alt="Logo" height={"42px"} />
-                    </Box>
-
                     <Box
                         onClick={toggleDrawer(true)}
                         sx={{ cursor: "pointer" }}
@@ -171,26 +141,6 @@ export default function Menu({ matches, linkProposal }) {
                     <li>
                         <Typography
                             component="a"
-                            href="#business"
-                            onClick={(e) => handleClick(e, "business")}
-                            sx={{ ...theme.typography.p, fontWeight: 600 }}
-                        >
-                            Business Model
-                        </Typography>
-                    </li>
-                    <li>
-                        <Typography
-                            component="a"
-                            href="#proposal"
-                            onClick={(e) => handleClick(e, "proposal")}
-                            sx={{ ...theme.typography.p, fontWeight: 600 }}
-                        >
-                            Proposal
-                        </Typography>
-                    </li>
-                    <li>
-                        <Typography
-                            component="a"
                             href="#contact"
                             onClick={(e) => handleClick(e, "contact")}
                             sx={{
@@ -199,26 +149,13 @@ export default function Menu({ matches, linkProposal }) {
                                 textAlign: "center",
                             }}
                         >
-                            Contact Us
+                            Contact
                         </Typography>
                     </li>
                     <li>
                         <Typography variant="p" sx={{ fontWeight: 600 }}>
                             <CustomButton
                                 buttontype="secondary"
-                                buttonVariant="textIconLeft"
-                                isOutlined
-                                iconLeft={LoginIcon}
-                                onClick={handleBtnLogin}
-                            >
-                                Login
-                            </CustomButton>
-                        </Typography>
-                    </li>
-                    <li>
-                        <Typography variant="p" sx={{ fontWeight: 600 }}>
-                            <CustomButton
-                                buttontype="primary"
                                 buttonVariant="text"
                                 isOutlined
                                 sx={{ float: "left", width: "fit-Content" }}
@@ -241,7 +178,7 @@ export default function Menu({ matches, linkProposal }) {
                 PaperProps={{
                     sx: {
                         height: drawerHeight,
-                        top: "66px", // Ajuste conforme a altura da Toolbar
+                        top: "66px",
                     },
                 }}
                 ModalProps={{

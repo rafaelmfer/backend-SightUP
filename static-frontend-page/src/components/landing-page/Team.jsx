@@ -1,30 +1,30 @@
 import React from "react";
 import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import Ripples from "react-ripples";
-import LinkedInIcon from "../../assets/icons/linkedinIconSquare.svg";
+import LinkedInIcon from "../../assets/icons/linkedin.svg";
 import Globe from "../../assets/icons/globe.svg";
-import Git from "../../assets/icons/gitIcon.png";
+import Git from "../../assets/icons/github.svg";
 
 const teamMembers = [
     {
-        name: "Yuriko Kikuchi",
-        role: "Co-PM and Lead Designer",
-        image: "https://firebasestorage.googleapis.com/v0/b/bondwork-dda21.appspot.com/o/pictures_onboarding%2Fyuriko.png?alt=media&token=bcad735f-868f-4f15-93ef-1f357d4bb02b",
-        linkedIn: "https://www.linkedIn.com/in/ykjp",
-        link: "https://yurikodesign.framer.website",
-        icon: Globe,
-    },
-    {
         name: "MoonYoung Lee",
-        role: "UI / UX Designer",
+        role: "Project Manager and<br>UI / UX Designer",
         image: "https://firebasestorage.googleapis.com/v0/b/bondwork-dda21.appspot.com/o/pictures_onboarding%2Fmoonyoung.png?alt=media&token=5d66983b-60ef-4d8a-bcc4-b017c5d7f281",
         linkedIn: "https://www.linkedIn.com/in/moonyoungl",
         link: "https://www.moonyounglee.com",
         icon: Globe,
     },
     {
+        name: "Yuriko Kikuchi",
+        role: "Lead UX / UI Designer",
+        image: "https://firebasestorage.googleapis.com/v0/b/bondwork-dda21.appspot.com/o/pictures_onboarding%2Fyuriko.png?alt=media&token=bcad735f-868f-4f15-93ef-1f357d4bb02b",
+        linkedIn: "https://www.linkedIn.com/in/ykjp",
+        link: "https://yurikodesign.framer.website",
+        icon: Globe,
+    },
+    {
         name: "TzeXuan Yap",
-        role: "UI / UX Designer",
+        role: "Lead Video Producer and<br>UX / UI Designer",
         image: "https://firebasestorage.googleapis.com/v0/b/bondwork-dda21.appspot.com/o/pictures_onboarding%2Fshane.png?alt=media&token=44e4c03d-7ba4-4bd3-a332-a5041f05d85f",
         linkedIn: "https://www.linkedIn.com/in/tzexuanyap-shane",
         link: "",
@@ -32,7 +32,7 @@ const teamMembers = [
     },
     {
         name: "Izabela Nadu",
-        role: "UI / UX Designer",
+        role: "Product Designer",
         image: "https://firebasestorage.googleapis.com/v0/b/bondwork-dda21.appspot.com/o/pictures_onboarding%2Fizabela.png?alt=media&token=c604cb35-e12c-4e45-8123-91d0ae5ba69c",
         linkedIn: "https://www.linkedIn.com/in/izabelanadu",
         link: "https://www.izabelanadu.com",
@@ -40,7 +40,7 @@ const teamMembers = [
     },
     {
         name: "Rafael Ferreira",
-        role: "PM and Lead Developer",
+        role: "Project Manager and<br>Lead Developer",
         image: "https://firebasestorage.googleapis.com/v0/b/bondwork-dda21.appspot.com/o/pictures_onboarding%2Frafael.png?alt=media&token=a2e7f57f-2d82-43dd-ad6c-956056309074",
         linkedIn: "https://www.linkedIn.com/in/rafaelm-ferreira",
         link: "https://github.com/rafaelmfer",
@@ -92,9 +92,9 @@ const TeamMember = ({
             <Typography
                 variant="p"
                 sx={{
-                    ...theme.typography.larken_h2,
-                    fontWeight: 600,
-                    fontSize: "24",
+                    ...theme.typography.larken_h5,
+                    fontWeight: 700,
+                    letterSpacing: "0.05em",
                     marginTop: "8px",
                 }}
             >
@@ -103,9 +103,8 @@ const TeamMember = ({
             <Typography
                 variant="p"
                 sx={{ ...theme.typography.p, marginTop: "4px" }}
-            >
-                {role}
-            </Typography>
+                dangerouslySetInnerHTML={{ __html: role }}
+            ></Typography>
             <Box
                 sx={{
                     display: "flex",

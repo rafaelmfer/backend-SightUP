@@ -23,8 +23,8 @@ export default function Footer({ matches }) {
                 paddingRight: "20px",
                 background: "White",
                 [theme.breakpoints.up("desktop")]: {
-                    paddingLeft: "80px",
-                    paddingRight: "80px",
+                    paddingLeft: "40px",
+                    paddingRight: "40px",
                 },
             }}
         >
@@ -72,7 +72,7 @@ export default function Footer({ matches }) {
                                 onClick={(e) => handleClick(e, "contact")}
                                 sx={{ ...theme.typography.p, fontWeight: 600 }}
                             >
-                                Contact Us
+                                Contact
                             </Typography>
                         </li>
                     </div>
@@ -114,7 +114,7 @@ export default function Footer({ matches }) {
                         width: "100%",
                     }}
                 >
-                    SignUP @ 2024. All rights reserved.
+                    SightUP @ 2024. All rights reserved.
                 </Typography>
             </Box>
         </Box>

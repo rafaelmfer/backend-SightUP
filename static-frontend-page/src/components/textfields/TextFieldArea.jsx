@@ -7,28 +7,8 @@ const Label = styled("label")(({ theme }) => ({
     alignItems: "center",
     color: theme.palette.neutrals.black,
     marginBottom: "4px",
+    ...theme.typography.p,
 }));
-
-const Hint = styled("p")(({ theme, error, focused, hovered, disabled }) => {
-    let color;
-    if (error) {
-        color = theme.palette.error[300];
-    } else if (focused) {
-        color = theme.palette.secondary[800];
-    } else if (hovered) {
-        color = theme.palette.secondary[700];
-    } else if (disabled) {
-        color = theme.palette.neutrals.gray300;
-    } else {
-        color = theme.palette.neutrals.gray300;
-    }
-
-    return {
-        color,
-        marginTop: "4px",
-        ...theme.typography.small2,
-    };
-});
 
 const TextAreaElement = styled("textarea")(
     ({ theme, disabled, error, focused }) => ({
@@ -36,7 +16,7 @@ const TextAreaElement = styled("textarea")(
         outline: 0,
         fontFamily: theme.typography.fontFamily,
         ...theme.typography.p,
-        padding: error ? "6px 2px 2px 14px" : "8px 4px 4px 16px",
+        padding: error ? "6px 2px 2px 10px" : "8px 4px 4px 12px",
         borderRadius: "8px",
         color: disabled
             ? theme.palette.neutrals.gray300
@@ -53,7 +33,7 @@ const TextAreaElement = styled("textarea")(
         resize: "none",
         transition: "border-color 0s ease, padding 0s ease",
         "&:hover": {
-            padding: disabled ? "8px 4px 4px 16px" : "6px 1.5px 1.5px 14px",
+            padding: disabled ? "8px 4px 4px 12px" : "6px 1.5px 1.5px 10px",
             marginBottom: disabled ? "0px" : "1.5px",
             border: disabled ? "1px solid" : "3px solid",
             borderColor: error
@@ -63,7 +43,7 @@ const TextAreaElement = styled("textarea")(
                   : theme.palette.secondary[300],
         },
         "&:focus": {
-            padding: "6px 2px 2px 14px",
+            padding: "6px 2px 2px 10px",
             border: "3px solid",
             borderColor: error
                 ? theme.palette.error[300]

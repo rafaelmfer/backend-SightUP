@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
-import TextFieldArea from "../textfields/TextFieldArea";
-import TextFieldRegular from "../textfields/TextFieldRegular";
-import CustomButton from "../buttons/CustomButton";
-import _theme from "../../theme/theme";
+import theme from "../../theme/theme";
 import homeIcon from "../../assets/icons/DailyEyeIcon.svg";
 import exerciseIcon from "../../assets/icons/ExerciseIcon.svg";
 import visionIcon from "../../assets/icons/VisionIcon.svg";
@@ -18,7 +15,7 @@ const CustomTypography = ({ text, variant, sx, ...props }) => {
         <Typography
             variant={variant}
             sx={{
-                ..._theme.typography[variant],
+                ...theme.typography[variant],
                 ...sx,
             }}
             {...props}
@@ -32,9 +29,6 @@ const CustomTypography = ({ text, variant, sx, ...props }) => {
 export default function OurFeatures({ id, matches, sx }) {
     const theme = useTheme();
     const isDesktop = useMediaQuery(theme.breakpoints.up("desktop"));
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [description, setDescription] = useState("");
 
     return (
         <Box
@@ -91,7 +85,6 @@ export default function OurFeatures({ id, matches, sx }) {
                         sx={{
                             display: isDesktop ? "grid" : "",
                             gridTemplateRows: "subGrid",
-                            background: "white",
                             borderRadius: "8px",
                             ...(!matches && {
                                 gridColumn: "1/2",
@@ -121,15 +114,15 @@ export default function OurFeatures({ id, matches, sx }) {
                                 sx={{
                                     fontSize: 20,
                                     fontWeight: 600,
-                                    color: _theme.palette.neutrals.black,
+                                    color: theme.palette.neutrals.black,
                                 }}
                             >
-                                Vision Tests
+                                Daily Eye Health Hub
                             </Typography>
                         </Box>
 
                         <CustomTypography
-                            text="Easily perform interactive, at-home vision tests designed for regular checkups. SightUP identifies potential issues early and guides users on when a clinical visit may be recommended."
+                            text="A go-to space for daily eye health tracking. Users check in their eye condition, receive personalized exercise recommendations, and explore wellness tips designed to support their vision journey."
                             variant="small1"
                             align="left"
                             sx={{
@@ -146,7 +139,7 @@ export default function OurFeatures({ id, matches, sx }) {
                         sx={{
                             display: isDesktop ? "grid" : "",
                             gridTemplateRows: "subGrid",
-                            background: "white",
+
                             borderRadius: "8px",
                             ...(!matches && {
                                 gridColumn: "2/3",
@@ -176,15 +169,15 @@ export default function OurFeatures({ id, matches, sx }) {
                                 sx={{
                                     fontSize: 20,
                                     fontWeight: 600,
-                                    color: _theme.palette.neutrals.black,
+                                    color: theme.palette.neutrals.black,
                                 }}
                             >
-                                Prescriptions
+                                Eye Exercises
                             </Typography>
                         </Box>
 
                         <CustomTypography
-                            text="Keep a detailed log of vision changes over time, tracking both verified and unverified results to make better-informed eye care decisions."
+                            text="Access guided exercises and relaxation techniques designed to relieve eye strain, promoting immediate comfort and long-term eye health."
                             variant="small1"
                             align="left"
                             sx={{
@@ -201,7 +194,6 @@ export default function OurFeatures({ id, matches, sx }) {
                         sx={{
                             display: isDesktop ? "grid" : "",
                             gridTemplateRows: "subGrid",
-                            background: "white",
                             borderRadius: "8px",
                             ...(!matches && {
                                 gridColumn: "3/4",
@@ -232,15 +224,15 @@ export default function OurFeatures({ id, matches, sx }) {
                                 sx={{
                                     fontSize: 20,
                                     fontWeight: 600,
-                                    color: _theme.palette.neutrals.black,
+                                    color: theme.palette.neutrals.black,
                                 }}
                             >
-                                Eye Exercises
+                                Vision Tests
                             </Typography>
                         </Box>
 
                         <CustomTypography
-                            text="Access guided exercises and relaxation techniques designed to relieve screen-induced eye strain, promoting both immediate comfort and long-term eye health."
+                            text="Efficiently perform interactive, at-home vision tests designed for regular checkups. SightUP identifies potential issues early and guides users on when a clinical visit may be recommended."
                             variant="small1"
                             align="left"
                             sx={{
@@ -257,7 +249,6 @@ export default function OurFeatures({ id, matches, sx }) {
                         sx={{
                             display: isDesktop ? "grid" : "",
                             gridTemplateRows: isDesktop ? "subGrid" : "",
-                            background: "white",
                             borderRadius: "8px",
                             ...(!matches && {
                                 gridColumn: "4/5",
@@ -288,15 +279,15 @@ export default function OurFeatures({ id, matches, sx }) {
                                 sx={{
                                     fontSize: 20,
                                     fontWeight: 600,
-                                    color: _theme.palette.neutrals.black,
+                                    color: theme.palette.neutrals.black,
                                 }}
                             >
-                                Daily Eye Health Hub
+                                Prescriptions Tracker
                             </Typography>
                         </Box>
 
                         <CustomTypography
-                            text="A go-to space for daily eye health tracking. Users check in their eye condition, receive personalized exercise recommendations, and explore wellness tips designed to support their vision journey."
+                            text="Keep a detailed log of vision changes over time, tracking both verified and unverified results to make better-informed eye care decisions."
                             variant="small1"
                             align="left"
                             sx={{

@@ -83,16 +83,16 @@ const theme = createTheme({
     typography: {
         fontFamily: "Lato, sans-serif, ui-sans-serif, system-ui",
         larken_h1: {
-            fontFamily: "Larken, sans-serif",
+            fontFamily: "'Larken', sans-serif",
             fontSize: "2.027rem",
             fontWeight: 600,
             lineHeight: "120%",
         },
         larken_h2: {
-            fontFamily: "Larken, sans-serif",
-            fontSize: "1.802rem",
+            fontFamily: "'Larken', sans-serif",
+            fontSize: "2rem",
             fontWeight: 600,
-            lineHeight: "120%",
+            lineHeight: "150%",
         },
         larken_h3: {
             fontFamily: "Larken, sans-serif",
@@ -108,9 +108,9 @@ const theme = createTheme({
         },
         larken_h5: {
             fontFamily: "Larken, sans-serif",
-            fontSize: "1.266rem",
-            fontWeight: 400,
-            lineHeight: "120%",
+            fontSize: "1.5rem",
+            fontWeight: 700,
+            lineHeight: "150%",
         },
         larken_h6: {
             fontFamily: "Larken, sans-serif",

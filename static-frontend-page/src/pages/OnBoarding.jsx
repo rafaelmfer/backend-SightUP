@@ -1,16 +1,10 @@
 import { useTheme } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Team from "../components/landing-page/Team";
-import BusinessModel from "../components/landing-page/BusinessModel";
-import Proposal from "../components/landing-page/Proposal";
-import ContactUs from "../components/landing-page/_ContactUs";
-import Cards from "../components/landing-page/Cards";
+import ContactUs from "../components/landing-page/ContactUs";
 import OurFeatures from "../components/landing-page/OurFeatures";
-import OurTeam from "../components/landing-page/OurTeam";
-import _Menu from "../components/landing-page/_Menu";
+import Menu from "../components/landing-page/Menu";
 import Footer from "../components/landing-page/Footer";
-import HeroCard from "../components/landing-page/HeroCard";
-import Carousel from "../components/landing-page/Carousel";
 import MobileImages from "../components/landing-page/MobileImages";
 import ClearVision from "../components/landing-page/ClearVision";
 import SignupVideo from "../components/landing-page/SignupVideo";
@@ -24,11 +18,10 @@ export default function Onboarding() {
 
     return (
         <main className="landing-page bg-neutrals-background items-center">
-            <_Menu matches={isMobile} linkProposal={proposalLink} />
+            <Menu matches={isMobile} linkProposal={proposalLink} />
 
             <MobileImages
                 id="solutions"
-                matches={isMobile}
                 sx={{
                     paddingLeft: "20px",
                     paddingRight: "20px",
