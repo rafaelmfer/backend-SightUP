@@ -1,23 +1,26 @@
 const mongoose = require("mongoose");
 
-const dailyCheckInfo = new mongoose.Schema({
-    visionStatus: {
-        type: String,
+const dailyCheckInfo = new mongoose.Schema(
+    {
+        visionStatus: {
+            type: String,
+        },
+        condition: {
+            type: [String],
+        },
+        causes: {
+            type: [String],
+        },
+        infoTime: {
+            type: Date,
+            default: Date.now,
+        },
+        done: {
+            type: Boolean,
+        },
     },
-    condition: {
-        type: [String],
-    },
-    causes: {
-        type: [String],
-    },
-    infoTime: {
-        type: Date,
-        default: Date.now,
-    },
-    done: {
-        type: Boolean,
-    },
-});
+    { _id: false }
+);
 
 const dailyExerciseInfo = new mongoose.Schema({
     eyesNow: {
@@ -74,9 +77,6 @@ const dailyExerciseInfo = new mongoose.Schema({
 });
 
 const dailyAssessmentSchema = new mongoose.Schema({
-    exerciseFelling: {
-        type: String,
-    },
     dailyCheckDate: {
         type: String,
         default: function () {

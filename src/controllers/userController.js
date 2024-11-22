@@ -164,7 +164,6 @@ const setupProfile = async (req, res) => {
 };
 
 const setupDailyCheck = async (req, res) => {
-    console.log("funcionando");
     try {
         const daily = new Daily(req.body);
 
