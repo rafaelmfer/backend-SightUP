@@ -107,6 +107,33 @@ const updatePrescription = async (req, res) => {
                 ...user.eyeWear,
                 contactLens: prescriptionData,
             };
+        } else if (prescriptionType === "Vision") {
+            let userHistory = await UserHistory.findOne({
+                userId: user._id,
+                userEmail: user.email,
+            });
+
+            const newTest = {
+                date: parsedPrescriptionDate,
+                appTest: false,
+                result: prescriptionInfo.map((info) => ({
+                    testType: info.testType,
+                    left: info.left,
+                    right: info.right,
+                })),
+            };
+
+            if (!userHistory) {
+                userHistory = new UserHistory({
+                    userId: user._id,
+                    userEmail: user.email,
+                    tests: [newTest],
+                });
+            } else {
+                userHistory.tests.push(newTest);
+            }
+
+            await userHistory.save();
         } else {
             return res
                 .status(400)
