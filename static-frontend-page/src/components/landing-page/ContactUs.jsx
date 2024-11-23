@@ -31,11 +31,7 @@ export default function ContactUs({ id, sx }) {
                 variant="h3"
                 align="center"
                 sx={{
-                    ...theme.typography.larken_h2,
-                    fontWeight: 600,
-                    [theme.breakpoints.up("desktop")]: {
-                        fontSize: "36px",
-                    },
+                    ...theme.typography.larken_title_medium,
                 }}
             >
                 Contact us

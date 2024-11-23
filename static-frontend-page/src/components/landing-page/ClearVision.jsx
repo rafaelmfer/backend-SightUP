@@ -8,7 +8,7 @@ export default function ClearVision({ id, matches, sx }) {
     return (
         <Box
             sx={{
-                backgroundColor: "#F5FCFF",
+                background: theme.palette.primary[300],
                 width: "100%",
                 display: "flex",
                 justifyContent: "center",
@@ -18,8 +18,8 @@ export default function ClearVision({ id, matches, sx }) {
         >
             <Box
                 sx={{
-                    background: "#2C76A8",
-                    borderRadius: "16px",
+                    background: theme.palette.primary.main,
+                    borderRadius: "1rem",
                     width: "100%",
                     maxWidth: "1280px",
                     display: "flex",
@@ -51,8 +51,8 @@ export default function ClearVision({ id, matches, sx }) {
                         variant="h3"
                         sx={{
                             ...theme.typography.larken_h2,
-                            fontWeight: "400",
-                            color: "white",
+                            lineHeight: "120%",
+                            color: theme.palette.secondary[970],
                             width: "100%",
                             textAlign: matches ? "center" : "",
                             fontSize:

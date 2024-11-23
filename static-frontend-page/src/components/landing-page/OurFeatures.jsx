@@ -34,7 +34,7 @@ export default function OurFeatures({ id, matches, sx }) {
         <Box
             id={id}
             sx={{
-                background: "#F5FCFF",
+                background: theme.palette.primary[300],
                 width: "100%",
                 display: "flex",
                 flexDirection: "column",
@@ -46,14 +46,9 @@ export default function OurFeatures({ id, matches, sx }) {
             }}
         >
             <Typography
-                variant="h3"
                 align="center"
                 sx={{
-                    ...theme.typography.larken_h3,
-                    fontWeight: 600,
-                    [theme.breakpoints.up("desktop")]: {
-                        fontSize: "36px",
-                    },
+                    ...theme.typography.larken_title_medium,
                 }}
             >
                 Explore Our Features
@@ -85,7 +80,7 @@ export default function OurFeatures({ id, matches, sx }) {
                         sx={{
                             display: isDesktop ? "grid" : "",
                             gridTemplateRows: "subGrid",
-                            borderRadius: "8px",
+                            borderRadius: "0.5rem",
                             ...(!matches && {
                                 gridColumn: "1/2",
                                 gridRow: "1/3",
@@ -96,7 +91,7 @@ export default function OurFeatures({ id, matches, sx }) {
                             sx={{
                                 display: "flex",
                                 alignItems: "center",
-                                gap: "8px",
+                                gap: "0.5rem",
                                 gridColumn: "1/2",
                                 gridRow: "1/2",
                             }}
@@ -109,11 +104,11 @@ export default function OurFeatures({ id, matches, sx }) {
                                 }}
                             />
                             <Typography
-                                variant="p"
                                 align="left"
                                 sx={{
-                                    fontSize: 20,
+                                    ...theme.typography.lato_p_twenty_regular,
                                     fontWeight: 600,
+                                    lineHeight: "120%",
                                     color: theme.palette.neutrals.black,
                                 }}
                             >
@@ -123,14 +118,14 @@ export default function OurFeatures({ id, matches, sx }) {
 
                         <CustomTypography
                             text="A go-to space for daily eye health tracking. Users check in their eye condition, receive personalized exercise recommendations, and explore wellness tips designed to support their vision journey."
-                            variant="small1"
                             align="left"
                             sx={{
-                                fontSize: 16,
+                                ...theme.typography.p,
+                                lineHeight: "140%",
                                 margin: "auto",
                                 gridColumn: "1/2",
-                                marginTop: "16px",
-                                fontFamily: "'Lato', sans-serif",
+                                marginTop: "1rem",
+
                             }}
                         />
                     </Box>
@@ -140,7 +135,7 @@ export default function OurFeatures({ id, matches, sx }) {
                             display: isDesktop ? "grid" : "",
                             gridTemplateRows: "subGrid",
 
-                            borderRadius: "8px",
+                            borderRadius: "0.5rem",
                             ...(!matches && {
                                 gridColumn: "2/3",
                                 gridRow: "1/3",
@@ -151,7 +146,7 @@ export default function OurFeatures({ id, matches, sx }) {
                             sx={{
                                 display: "flex",
                                 alignItems: "center",
-                                gap: "8px",
+                                gap: "0.5rem",
                                 gridColumn: "1/2",
                                 gridRow: "1/2",
                             }}
@@ -164,11 +159,11 @@ export default function OurFeatures({ id, matches, sx }) {
                                 }}
                             />
                             <Typography
-                                variant="p"
                                 align="left"
                                 sx={{
-                                    fontSize: 20,
+                                    ...theme.typography.lato_p_twenty_regular,
                                     fontWeight: 600,
+                                    lineHeight: "120%",
                                     color: theme.palette.neutrals.black,
                                 }}
                             >
@@ -178,14 +173,13 @@ export default function OurFeatures({ id, matches, sx }) {
 
                         <CustomTypography
                             text="Access guided exercises and relaxation techniques designed to relieve eye strain, promoting immediate comfort and long-term eye health."
-                            variant="small1"
                             align="left"
                             sx={{
-                                fontSize: 16,
+                                ...theme.typography.p,
+                                lineHeight: "140%",
                                 margin: "auto",
                                 gridColumn: "1/2",
-                                marginTop: "16px",
-                                fontFamily: "'Lato', sans-serif",
+                                marginTop: "1rem",
                             }}
                         />
                     </Box>
@@ -194,7 +188,7 @@ export default function OurFeatures({ id, matches, sx }) {
                         sx={{
                             display: isDesktop ? "grid" : "",
                             gridTemplateRows: "subGrid",
-                            borderRadius: "8px",
+                            borderRadius: "0.5rem",
                             ...(!matches && {
                                 gridColumn: "3/4",
                                 gridRow: "1/3",
@@ -205,7 +199,7 @@ export default function OurFeatures({ id, matches, sx }) {
                             sx={{
                                 display: "flex",
                                 alignItems: "center",
-                                gap: "8px",
+                                gap: "0.5rem",
                                 gridColumn: "1/2",
                                 gridRow: "1/2",
                             }}
@@ -219,11 +213,11 @@ export default function OurFeatures({ id, matches, sx }) {
                             />
 
                             <Typography
-                                variant="p"
                                 align="left"
                                 sx={{
-                                    fontSize: 20,
+                                    ...theme.typography.lato_p_twenty_regular,
                                     fontWeight: 600,
+                                    lineHeight: "120%",
                                     color: theme.palette.neutrals.black,
                                 }}
                             >
@@ -233,14 +227,13 @@ export default function OurFeatures({ id, matches, sx }) {
 
                         <CustomTypography
                             text="Efficiently perform interactive, at-home vision tests designed for regular checkups. SightUP identifies potential issues early and guides users on when a clinical visit may be recommended."
-                            variant="small1"
                             align="left"
                             sx={{
-                                fontSize: 16,
+                                ...theme.typography.p,
+                                lineHeight: "140%",
                                 margin: "auto",
                                 gridColumn: "1/2",
-                                marginTop: "16px",
-                                fontFamily: "'Lato', sans-serif",
+                                marginTop: "1rem",
                             }}
                         />
                     </Box>
@@ -249,7 +242,7 @@ export default function OurFeatures({ id, matches, sx }) {
                         sx={{
                             display: isDesktop ? "grid" : "",
                             gridTemplateRows: isDesktop ? "subGrid" : "",
-                            borderRadius: "8px",
+                            borderRadius: "0.5rem",
                             ...(!matches && {
                                 gridColumn: "4/5",
                                 gridRow: "1/3",
@@ -260,7 +253,7 @@ export default function OurFeatures({ id, matches, sx }) {
                             sx={{
                                 display: "flex",
                                 alignItems: "center",
-                                gap: "8px",
+                                gap: "0.5rem",
                                 gridColumn: "1/2",
                                 gridRow: "1/2",
                             }}
@@ -274,11 +267,11 @@ export default function OurFeatures({ id, matches, sx }) {
                             />
 
                             <Typography
-                                variant="p"
                                 align="left"
                                 sx={{
-                                    fontSize: 20,
+                                    ...theme.typography.lato_p_twenty_regular,
                                     fontWeight: 600,
+                                    lineHeight: "120%",
                                     color: theme.palette.neutrals.black,
                                 }}
                             >
@@ -288,14 +281,13 @@ export default function OurFeatures({ id, matches, sx }) {
 
                         <CustomTypography
                             text="Keep a detailed log of vision changes over time, tracking both verified and unverified results to make better-informed eye care decisions."
-                            variant="small1"
                             align="left"
                             sx={{
-                                fontSize: 16,
+                                ...theme.typography.p,
+                                lineHeight: "140%",
                                 margin: "auto",
                                 gridColumn: "1/2",
-                                marginTop: "16px",
-                                fontFamily: "'Lato', sans-serif",
+                                marginTop: "1rem",
                             }}
                         />
                     </Box>
