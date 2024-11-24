@@ -20,7 +20,7 @@ const theme = createTheme({
             50: "#FFFFFF",
             100: "#FEF5F5", 
             200: "#FDE9E9",
-            300: "#ECF5FD",
+            300: "#F5FCFF",
             400: "#F9C2C1",
             500: "#F6A8A6",
             600: "#4190DA",
@@ -41,6 +41,7 @@ const theme = createTheme({
             900: "#05213C",
             950: "#041A2F",
             960: "#D5D9DE",
+            970: "#FEFEFE",
             contrastText: "#FFFEFE",
         },
         error: {
@@ -136,6 +137,12 @@ const theme = createTheme({
             fontWeight: 400,
             lineHeight: "120%",
         },
+        larken_title_medium: {
+            fontFamily: "Larken, sans-serif",
+            fontSize: "2.25rem",
+            lineHeight: "150%",
+            fontWeight: 600
+        },
 
         h1: { fontSize: "2.027rem", fontWeight: 600, lineHeight: "120%" },
         h2: { fontSize: "1.802rem", fontWeight: 600, lineHeight: "120%" },
@@ -153,6 +160,11 @@ const theme = createTheme({
             fontSize: "0.79rem",
             fontWeight: 400,
             lineHeight: "120%",
+        },
+        lato_p_twenty_regular: {
+            fontSize: "1.25rem",
+            fontWeight: 400,
+            lineHeight: "150%",
         },
     },
     breakpoints: {

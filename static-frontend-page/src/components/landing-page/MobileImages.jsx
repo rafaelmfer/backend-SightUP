@@ -11,7 +11,7 @@ export default function MobileImages({ id, sx }) {
         <Box
             id={id}
             sx={{
-                background: "#F5FCFF",
+                background: theme.palette.primary[300],
                 position: "relative",
                 width: "100%",
                 display: "flex",
@@ -75,10 +75,10 @@ export default function MobileImages({ id, sx }) {
                 align="center"
                 zIndex="2"
                 sx={{
-                    ...theme.typography.p,
-                    fontSize: isMobile ? "16px" : "20px",
-                    paddingTop: "20px",
-                    paddingBottom: isMobile ? "127px" : "89px",
+                    ...theme.typography.lato_p_twenty_regular,
+                    fontSize: isMobile ? "1rem" : "1.25rem",
+                    paddingTop: "1.25rem",
+                    paddingBottom: isMobile ? "7.9375rem" : "5.5625rem",
                 }}
             >
                 An-all-in-one vision care mobile app offering

@@ -100,9 +100,11 @@ const TeamMember = ({
             >
                 {name}
             </Typography>
-            <Typography
-                variant="p"
-                sx={{ ...theme.typography.p, marginTop: "4px" }}
+            <Typography 
+                sx={{ ...theme.typography.p,
+                    lineHeight: "140%",
+                    marginTop: "4px" 
+                }}
                 dangerouslySetInnerHTML={{ __html: role }}
             ></Typography>
             <Box
@@ -112,7 +114,7 @@ const TeamMember = ({
                     justifyItems: "center",
                     alignItems: "center",
                     textAlign: "center",
-                    marginTop: "20px",
+                    marginTop: "10px",
                 }}
             >
                 <Ripples className="relative inline-block rounded-full unbounded">
@@ -148,19 +150,15 @@ const Team = ({ id, sx }) => {
         <Box
             id={id}
             sx={{
-                backgroundColor: "#F5FCFF",
+                background: theme.palette.primary[300],
                 width: "100%",
                 ...sx,
             }}
         >
             <Typography
-                variant="h3"
                 align="center"
                 sx={{
-                    ...theme.typography.larken_h2,
-                    [theme.breakpoints.up("desktop")]: {
-                        fontSize: "36px",
-                    },
+                    ...theme.typography.larken_title_medium,
                 }}
             >
                 Meet Our Team

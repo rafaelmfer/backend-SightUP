@@ -82,7 +82,9 @@ export default function Footer({ matches }) {
                             width: isDesktop ? "fit-content" : "100%",
                         }}
                     >
-                        <Typography variant="p" sx={{ fontWeight: 600 }}>
+                        <Typography 
+                            sx={{ ...theme.typography.p, fontWeight: 600 }}
+                        >
                             <CustomButton
                                 buttontype="secondary"
                                 buttonVariant="text"

@@ -1,11 +1,12 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 
 export default function SignupVideo({ id, matches, sx }) {
+    const theme = useTheme();
     return (
         <Box
             id={id}
             sx={{
-                backgroundColor: "#F5FCFF",
+                background: theme.palette.primary[300],
                 width: "100%",
                 marginLeft: "auto",
                 marginRight: "auto",
