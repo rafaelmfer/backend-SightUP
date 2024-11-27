@@ -64,7 +64,7 @@ export default function _Menu({ matches, linkProposal }) {
                             marginLeft: "80px",
                             marginRight: "80px",
                             "&:hover": {
-                                backgroundColor: theme.palette.primary[200],
+                                backgroundColor: theme.palette.primary[50],
                             },
                         }}
                     >
@@ -85,7 +85,7 @@ export default function _Menu({ matches, linkProposal }) {
                 display: "flex",
                 justifyContent: "space-between",
                 position: "sticky",
-                background: theme.palette.neutrals.background,
+                background: theme.palette.primary[50],
                 top: "0px",
                 left: "0px",
                 zIndex: 10,
@@ -158,7 +158,11 @@ export default function _Menu({ matches, linkProposal }) {
                                 buttontype="secondary"
                                 buttonVariant="text"
                                 isOutlined
-                                sx={{ float: "left", width: "fit-Content" }}
+                                sx={{ 
+                                    float: "left", 
+                                    width: "fit-Content" ,
+                                    fontWeight: "bold",
+                                }}
                                 onClick={() => {
                                     window.open(linkProposal);
                                 }}
