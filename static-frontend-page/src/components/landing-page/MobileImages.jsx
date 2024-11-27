@@ -1,5 +1,6 @@
 import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
-import homeIcon from "../../assets/icons/mobiles.png";
+//import homeIcon from "../../assets/icons/mobiles.png";
+import homeIcon from "../../assets/icons/header-mockup.svg";
 import facesLeft from "../../assets/icons/faces_left.svg";
 import facesRight from "../../assets/icons/faces_right.svg";
 
@@ -18,14 +19,14 @@ export default function MobileImages({ id, sx }) {
                 flexDirection: "column",
                 alignItems: "center",
                 fontWeight: "bold",
-                paddingTop: isMobile ? "136px" : "111px",
+                paddingTop: isMobile ? "88px" : "111px",
                 ...sx,
             }}
         >
             <Box
                 sx={{
                     position: "absolute",
-                    top: "10%",
+                    top: "4%",
                     width: "100%",
                     maxWidth: "1100px",
                     height: "100%",
@@ -39,7 +40,7 @@ export default function MobileImages({ id, sx }) {
                     style={{
                         position: "sticky",
                         left: "0px",
-                        width: "18%",
+                        width: isMobile?"30%":"18%",
                         top: isMobile ? "100px" : "70px",
                         height: "fit-content",
                     }}
@@ -49,7 +50,7 @@ export default function MobileImages({ id, sx }) {
                     style={{
                         position: "sticky",
                         left: "0px",
-                        width: "14%",
+                        width: isMobile?"21%":"17%",
                         paddingTop: "50px",
                         top: isMobile ? "100px" : "70px",
                         height: "fit-content",

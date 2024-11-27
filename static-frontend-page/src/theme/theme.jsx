@@ -42,6 +42,8 @@ const theme = createTheme({
             950: "#041A2F",
             960: "#D5D9DE",
             970: "#FEFEFE",
+            980: "#235E86",
+            990: "#AAB4BD",
             contrastText: "#FFFEFE",
         },
         error: {
@@ -165,6 +167,11 @@ const theme = createTheme({
             fontSize: "1.25rem",
             fontWeight: 400,
             lineHeight: "150%",
+        },
+        lato_fourteen: {
+            fontSize: "0.875rem",
+            fontWeight: "bold",
+            lineHeight: "auto",
         },
     },
     breakpoints: {
