@@ -1,13 +1,13 @@
 import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
-//import homeIcon from "../../assets/icons/mobiles.png";
-import homeIcon from "../../assets/icons/header-mockup.svg";
+// import homeIcon from "../../assets/images/header_image.png";
+import homeIcon from "../../assets/images/header-mockup.svg";
 import facesLeft from "../../assets/icons/faces_left.svg";
 import facesRight from "../../assets/icons/faces_right.svg";
 
 export default function MobileImages({ id, sx }) {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("desktop"));
-    
+
     return (
         <Box
             id={id}
@@ -26,9 +26,9 @@ export default function MobileImages({ id, sx }) {
             <Box
                 sx={{
                     position: "absolute",
-                    top: "4%",
+                    top: "5%",
                     width: "100%",
-                    maxWidth: "1100px",
+                    maxWidth: "1200px",
                     height: "100%",
                     display: "flex",
                     justifyContent: "space-between",
@@ -40,8 +40,8 @@ export default function MobileImages({ id, sx }) {
                     style={{
                         position: "sticky",
                         left: "0px",
-                        width: isMobile?"30%":"18%",
-                        top: isMobile ? "100px" : "70px",
+                        width: isMobile ? "30%" : "15%",
+                        top: isMobile ? "100px" : "80px",
                         height: "fit-content",
                     }}
                 />
@@ -50,7 +50,7 @@ export default function MobileImages({ id, sx }) {
                     style={{
                         position: "sticky",
                         left: "0px",
-                        width: isMobile?"21%":"17%",
+                        width: isMobile ? "21%" : "12%",
                         paddingTop: "50px",
                         top: isMobile ? "100px" : "70px",
                         height: "fit-content",
@@ -102,8 +102,8 @@ export default function MobileImages({ id, sx }) {
                 <img
                     src={homeIcon}
                     style={{
-                        width: isMobile ? "100%" : "90%",
-                        maxWidth: "675px",
+                        width: isMobile ? "100%" : "100%",
+                        maxWidth: "780px",
                     }}
                 />
             </Box>

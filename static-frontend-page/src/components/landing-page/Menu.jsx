@@ -89,7 +89,7 @@ export default function _Menu({ matches, linkProposal }) {
                 top: "0px",
                 left: "0px",
                 zIndex: 10,
-                padding: matches ? "12px 24px 12px 24px" : "12px 40px",
+                padding: matches ? "12px 16px 12px 24px" : "12px 40px",
             }}
         >
             {matches ? (
@@ -99,7 +99,7 @@ export default function _Menu({ matches, linkProposal }) {
             )}
 
             {matches ? (
-                <Box className="flex items-center mr-1">
+                <Box className="flex items-center">
                     <Box
                         onClick={toggleDrawer(true)}
                         sx={{ cursor: "pointer" }}
@@ -110,7 +110,7 @@ export default function _Menu({ matches, linkProposal }) {
                             style={{
                                 height: "48px",
                                 width: "48px",
-                                padding: "0px 10px",
+                                padding: "0px 8px",
                             }}
                             keepLastFrame
                         />
