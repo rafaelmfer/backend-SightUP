@@ -1,5 +1,5 @@
 import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
-import mobileDesktopImg from "../../assets/icons/desktopmobile.png";
+import mobileDesktopImg from "../../assets/images/desktopmobile.png";
 import CustomButton from "../buttons/CustomButton";
 
 export default function ClearVision({ id, matches, sx }) {

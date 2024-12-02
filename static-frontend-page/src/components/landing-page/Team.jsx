@@ -4,12 +4,20 @@ import Ripples from "react-ripples";
 import LinkedInIcon from "../../assets/icons/linkedin.svg";
 import Globe from "../../assets/icons/globe.svg";
 import Git from "../../assets/icons/github.svg";
+import Ceci from "../../assets/profile_pic/Ceci.jpg"
+import Rafael from "../../assets/profile_pic/Rafael.jpg"
+import Sidney from "../../assets/profile_pic/Sidney.jpg"
+import Yuriko from "../../assets/profile_pic/Yuriko.jpg"
+import Shane from "../../assets/profile_pic/Shane.jpg"
+import Moon from "../../assets/profile_pic/Moon.jpg"
+import Iza from "../../assets/profile_pic/Iza.jpg"
+
 
 const teamMembers = [
     {
         name: "MoonYoung Lee",
         role: "Project Manager and<br>UI / UX Designer",
-        image: "https://firebasestorage.googleapis.com/v0/b/bondwork-dda21.appspot.com/o/pictures_onboarding%2Fmoonyoung.png?alt=media&token=5d66983b-60ef-4d8a-bcc4-b017c5d7f281",
+        image: Moon,
         linkedIn: "https://www.linkedIn.com/in/moonyoungl",
         link: "https://www.moonyounglee.com",
         icon: Globe,
@@ -17,7 +25,7 @@ const teamMembers = [
     {
         name: "Yuriko Kikuchi",
         role: "Lead UX / UI Designer",
-        image: "https://firebasestorage.googleapis.com/v0/b/bondwork-dda21.appspot.com/o/pictures_onboarding%2Fyuriko.png?alt=media&token=bcad735f-868f-4f15-93ef-1f357d4bb02b",
+        image: Yuriko,
         linkedIn: "https://www.linkedIn.com/in/ykjp",
         link: "https://yurikodesign.framer.website",
         icon: Globe,
@@ -25,7 +33,7 @@ const teamMembers = [
     {
         name: "TzeXuan Yap",
         role: "Lead Video Producer and<br>UX / UI Designer",
-        image: "https://firebasestorage.googleapis.com/v0/b/bondwork-dda21.appspot.com/o/pictures_onboarding%2Fshane.png?alt=media&token=44e4c03d-7ba4-4bd3-a332-a5041f05d85f",
+        image: Shane,
         linkedIn: "https://www.linkedIn.com/in/tzexuanyap-shane",
         link: "",
         icon: Globe,
@@ -33,7 +41,7 @@ const teamMembers = [
     {
         name: "Izabela Nadu",
         role: "Product Designer",
-        image: "https://firebasestorage.googleapis.com/v0/b/bondwork-dda21.appspot.com/o/pictures_onboarding%2Fizabela.png?alt=media&token=c604cb35-e12c-4e45-8123-91d0ae5ba69c",
+        image: Iza,
         linkedIn: "https://www.linkedIn.com/in/izabelanadu",
         link: "https://www.izabelanadu.com",
         icon: Globe,
@@ -41,7 +49,7 @@ const teamMembers = [
     {
         name: "Rafael Ferreira",
         role: "Project Manager and<br>Lead Developer",
-        image: "https://firebasestorage.googleapis.com/v0/b/bondwork-dda21.appspot.com/o/pictures_onboarding%2Frafael.png?alt=media&token=a2e7f57f-2d82-43dd-ad6c-956056309074",
+        image: Rafael,
         linkedIn: "https://www.linkedIn.com/in/rafaelm-ferreira",
         link: "https://github.com/rafaelmfer",
         icon: Git,
@@ -49,7 +57,7 @@ const teamMembers = [
     {
         name: "Cecilia Lopez",
         role: "Full-stack Developer",
-        image: "https://firebasestorage.googleapis.com/v0/b/bondwork-dda21.appspot.com/o/pictures_onboarding%2Fcecilia.png?alt=media&token=90f0b0d9-a31e-4631-ab05-6cad2ed9a76e",
+        image: Ceci,
         linkedIn: "https://www.linkedIn.com/in/cecilia-ls",
         link: "https://github.com/cecilia314",
         icon: Git,
@@ -57,7 +65,7 @@ const teamMembers = [
     {
         name: "Sidney Kai",
         role: "Full-stack Developer",
-        image: "https://firebasestorage.googleapis.com/v0/b/bondwork-dda21.appspot.com/o/pictures_onboarding%2Fsidney.png?alt=media&token=1b4b9c89-c6bc-4b3b-9fab-1570bf7e4711",
+        image: Sidney,
         linkedIn: "https://www.linkedIn.com/in/sidney-kai",
         link: "https://github.com/shogo12000",
         icon: Git,
@@ -84,18 +92,32 @@ const TeamMember = ({
                 gridRow,
                 gridColumn,
                 justifyItems: "center",
-                alignItems: "center",
-                textAlign: "center",
+                alignItems: "start",
+                textAlign: "center",                
+                background: theme.palette.secondary[970],
+                borderRadius: "16px 16px 16px 16px",
+                border: "1px solid " + theme.palette.secondary[990],
             }}
         >
-            <img src={image} alt={name} width={160} />
+            
+            <Box
+                sx={{
+                    Width: "100%",
+                    maxHeight: "auto",
+                    overflow: "hidden",
+                    borderRadius: "16px 16px 0 0",
+                }}
+            >
+                <img src={image} alt={name} Width={"100%"}/>
+            </Box>
+
             <Typography
                 variant="p"
                 sx={{
                     ...theme.typography.larken_h5,
                     fontWeight: 700,
                     letterSpacing: "0.05em",
-                    marginTop: "8px",
+                    marginTop: "16px",
                 }}
             >
                 {name}
@@ -114,7 +136,7 @@ const TeamMember = ({
                     justifyItems: "center",
                     alignItems: "center",
                     textAlign: "center",
-                    marginTop: "10px",
+                    marginBottom: ".5rem",
                 }}
             >
                 <Ripples className="relative inline-block rounded-full unbounded">
@@ -122,7 +144,7 @@ const TeamMember = ({
                         aria-label="linkedin"
                         href={linkedIn ?? "#"}
                         target="_blank"
-                        className="flex items-center justify-center w-12 h-12 p-3 rounded-full hover:bg-main-100 transition duration-300 ease-in-out"
+                        className="flex items-center justify-center w-12 h-12 p-3 rounded-full hover:bg-secondary-100 transition duration-300 ease-in-out"
                     >
                         <img src={LinkedInIcon} alt="Linkedin" />
                     </a>
@@ -132,8 +154,7 @@ const TeamMember = ({
                         aria-label="linkedin"
                         href={link ?? "#"}
                         target="_blank"
-                        className="flex items-center justify-center w-12 h-12 p-3 rounded-full hover:bg-main-100 transition duration-300 ease-in-out"
-                    >
+                        className="flex items-center justify-center w-12 h-12 p-3 rounded-full hover:bg-secondary-100 transition duration-300 ease-in-out"                    >
                         <img src={icon} alt="Website" />
                     </a>
                 </Ripples>
@@ -165,7 +186,7 @@ const Team = ({ id, sx }) => {
             </Typography>
             <Box
                 sx={{
-                    maxWidth: "960px",
+                    maxWidth: "1280px",
                     margin: "64px auto 0 auto",
                     display: "grid",
                     gridTemplateColumns: isDesktop
@@ -174,7 +195,7 @@ const Team = ({ id, sx }) => {
                     gridTemplateRows: isDesktop
                         ? "auto auto auto auto 64px auto"
                         : "auto auto auto auto 37px auto auto auto auto 37px auto auto auto auto 37px auto auto auto auto 37px auto auto auto auto 37px auto auto auto auto 37px auto auto auto",
-                    gap: "0 12px",
+                    gap: "0 32px",
                     alignItems: "center",
                 }}
             >

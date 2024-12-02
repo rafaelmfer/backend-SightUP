@@ -40,7 +40,7 @@ const TextAreaElement = styled("textarea")(
                 ? theme.palette.error[300]
                 : disabled
                   ? theme.palette.neutrals.gray300
-                  : theme.palette.secondary[300],
+                  : theme.palette.primary.main,
         },
         "&:focus": {
             padding: "6px 2px 2px 10px",

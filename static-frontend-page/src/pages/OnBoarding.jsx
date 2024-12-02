@@ -39,7 +39,7 @@ export default function Onboarding() {
 
             <SignupVideo
                 id="signupVideo"
-                matches={isMobile}
+                isMobile={isMobile}
                 sx={{
                     paddingLeft: "20px",
                     paddingRight: "20px",
