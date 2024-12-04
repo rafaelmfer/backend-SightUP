@@ -65,7 +65,7 @@ const CustomTextField = styled(TextField)(({ theme, disabled }) => ({
         },
         "&:hover:not(.Mui-focused):not(.Mui-error):not(.Mui-disabled) .MuiOutlinedInput-notchedOutline":
             {
-                borderColor: theme.palette.secondary[300],
+                borderColor: theme.palette.primary.main,
                 borderWidth: "3px",
             },
         "&.Mui-disabled .MuiOutlinedInput-notchedOutline": {

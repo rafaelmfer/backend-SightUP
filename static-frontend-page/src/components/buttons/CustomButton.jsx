@@ -14,7 +14,7 @@ const CustomButtonStyled = styled(Button)(
         textTransform: "none",
         boxShadow: "none",
         fontFamily: theme.typography.fontFamily,
-        ...theme.typography.p,
+        ...theme.typography.lato_fourteen,
         "& .MuiButton-startIcon": {
             marginRight: buttonVariant === "textIconLeft" ? "8px" : "0",
             marginLeft: buttonVariant === "textIconRight" ? "8px" : "0",
@@ -36,7 +36,7 @@ const CustomButtonStyled = styled(Button)(
         ...(buttontype === "primary" && {
             backgroundColor: theme.palette.primary.main,
             color: theme.palette.neutrals.white,
-            border: `2px solid ${theme.palette.secondary[600]}`,
+            border: `2px solid ${theme.palette.primary.main}`,
             "& .MuiButton-startIcon, & .MuiButton-endIcon": {
                 filter: "brightness(0) invert(1)",
             },
@@ -45,8 +45,8 @@ const CustomButtonStyled = styled(Button)(
                     filter: "brightness(0) saturate(100%) invert(12%) sepia(84%) saturate(3903%) hue-rotate(356deg) brightness(91%) contrast(109%)",
                 },
                 backgroundColor: theme.palette.primary[300],
-                color: theme.palette.primary[600],
-                border: `2px solid ${theme.palette.primary[600]}`,
+                color: theme.palette.primary.main,
+                border: `2px solid ${theme.palette.primary.main}`,
                 boxShadow: "none",
             },
             "&.Mui-disabled": {
@@ -57,8 +57,8 @@ const CustomButtonStyled = styled(Button)(
         ...(buttontype === "secondary" &&
             isOutlined && {
                 backgroundColor: theme.palette.neutrals.white,
-                color: theme.palette.secondary[600],
-                border: `2px solid ${theme.palette.secondary[600]}`,
+                color: theme.palette.secondary[980],
+                border: `1px solid ${theme.palette.secondary[980]}`,
                 "& .MuiButton-startIcon, & .MuiButton-endIcon": {
                     filter: "brightness(0) saturate(100%) invert(32%) sepia(64%) saturate(2804%) hue-rotate(174deg) brightness(97%) contrast(89%)",
                 },
@@ -67,7 +67,7 @@ const CustomButtonStyled = styled(Button)(
                         filter: "brightness(0) saturate(100%) invert(32%) sepia(64%) saturate(2804%) hue-rotate(174deg) brightness(97%) contrast(89%)",
                     },
                     backgroundColor: theme.palette.secondary[100],
-                    border: `2px solid ${theme.palette.secondary[600]}`,
+                    border: `2px solid ${theme.palette.secondary[980]}`,
                     boxShadow: "none",
                 },
                 "&.Mui-disabled": {

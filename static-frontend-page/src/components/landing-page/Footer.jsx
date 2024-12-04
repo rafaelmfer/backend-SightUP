@@ -1,9 +1,9 @@
-import { Box, Typography, useMediaQuery } from "@mui/material";
+import { Box, colors, Typography, useMediaQuery } from "@mui/material";
 import sighupLogo from "../../assets/icons/sighupLogo.svg";
 import theme from "../../theme/theme";
 import CustomButton from "../buttons/CustomButton";
 
-export default function Footer({ matches }) {
+export default function Footer({ matches, linkProposal }) {
     const isDesktop = useMediaQuery(theme.breakpoints.up("desktop"));
 
     const handleClick = (event, targetId) => {
@@ -92,8 +92,10 @@ export default function Footer({ matches }) {
                                 sx={{
                                     width: isDesktop ? "fit-content" : "100%",
                                     marginTop: isDesktop ? "0px" : "32px",
+                                    fontWeight: "bold",
                                 }}
                                 onClick={() => {
+                                    window.open(linkProposal);
                                 }}
                             >
                                 Get Proposal
