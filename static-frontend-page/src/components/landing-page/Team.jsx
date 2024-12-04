@@ -27,7 +27,7 @@ const teamMembers = [
         role: "Lead UX / UI Designer",
         image: Yuriko,
         linkedIn: "https://www.linkedIn.com/in/ykjp",
-        link: "https://yurikodesign.framer.website",
+        link: "https://yurikodesign.com",
         icon: Globe,
     },
     {
@@ -35,7 +35,7 @@ const teamMembers = [
         role: "Lead Video Producer and<br>UX / UI Designer",
         image: Shane,
         linkedIn: "https://www.linkedIn.com/in/tzexuanyap-shane",
-        link: "",
+        link: "https://tzexuanyap-shane.com",
         icon: Globe,
     },
     {

@@ -40,40 +40,75 @@ export default function _Menu({ matches, linkProposal }) {
 
     const drawerContent = (
         <Box
-            sx={{ width: 250 }}
+            sx={{ width: 300, height: "100%" }}
             role="presentation"
             onClick={toggleDrawer(false)}
             onKeyDown={toggleDrawer(false)}
         >
-            <List sx={{ paddingTop: "16px" }}>
-                {[
-                    { text: "Solutions", id: "solutions" },
-                    { text: "Team", id: "team" },
-                    { text: "Contact", id: "contact" },
-                ].map(({ text, id }) => (
-                    <ListItem
-                        button
-                        key={text}
-                        onClick={(e) => handleClick(e, id)}
-                        sx={{
-                            width: "unset",
-                            borderRadius: "10px",
-                            paddingLeft: "8px",
-                            paddingTop: "12px",
-                            paddingBottom: "12px",
-                            marginLeft: "80px",
-                            marginRight: "80px",
-                            "&:hover": {
-                                backgroundColor: theme.palette.primary[50],
-                            },
-                        }}
-                    >
-                        <Typography variant="p" sx={{ fontWeight: 600 }}>
-                            {text}
-                        </Typography>
-                    </ListItem>
-                ))}
-            </List>
+            <Box
+                sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    height: "100%",
+                    justifyContent: "space-between",
+                }}
+            >
+                <List sx={{ paddingTop: "16px" }}>
+                    {[
+                        { text: "Solutions", id: "solutions" },
+                        { text: "Team", id: "team" },
+                        { text: "Contact", id: "contact" },
+                    ].map(({ text, id }) => (
+                        <ListItem
+                            button
+                            key={text}
+                            onClick={(e) => handleClick(e, id)}
+                            sx={{
+                                width: "unset",
+                                borderRadius: "10px",
+                                paddingLeft: "8px",
+                                paddingTop: "12px",
+                                paddingBottom: "12px",
+                                marginLeft: "20px",
+                                marginRight: "80px",
+                                "&:hover": {
+                                    backgroundColor: theme.palette.primary[50],
+                                },
+                            }}
+                        >
+                            <Typography
+                                variant="p"
+                                sx={{
+                                    fontFamily:
+                                        "Lato, sans-serif, ui-sans-serif, system-ui",
+                                    fontWeight: 500,
+                                }}
+                            >
+                                {text}
+                            </Typography>
+                        </ListItem>
+                    ))}
+                </List>
+
+                <CustomButton
+                    buttontype="secondary"
+                    buttonVariant="text"
+                    isOutlined
+                    sx={{
+                        float: "left",
+                        width: "100% - 24px",
+                        fontWeight: "bold",
+                        marginLeft: "24px",
+                        marginRight: "24px",
+                        marginBottom: "24px",
+                    }}
+                    onClick={() => {
+                        window.open(linkProposal);
+                    }}
+                >
+                    View Proposal
+                </CustomButton>
+            </Box>
         </Box>
     );
 
@@ -158,16 +193,16 @@ export default function _Menu({ matches, linkProposal }) {
                                 buttontype="secondary"
                                 buttonVariant="text"
                                 isOutlined
-                                sx={{ 
-                                    float: "left", 
-                                    width: "fit-Content" ,
+                                sx={{
+                                    float: "left",
+                                    width: "fit-Content",
                                     fontWeight: "bold",
                                 }}
                                 onClick={() => {
                                     window.open(linkProposal);
                                 }}
                             >
-                                Get Proposal
+                                View Proposal
                             </CustomButton>
                         </Typography>
                     </li>

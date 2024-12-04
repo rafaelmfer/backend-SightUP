@@ -3,7 +3,7 @@ import sighupLogo from "../../assets/icons/sighupLogo.svg";
 import theme from "../../theme/theme";
 import CustomButton from "../buttons/CustomButton";
 
-export default function Footer({ matches }) {
+export default function Footer({ matches, linkProposal }) {
     const isDesktop = useMediaQuery(theme.breakpoints.up("desktop"));
 
     const handleClick = (event, targetId) => {
@@ -95,6 +95,7 @@ export default function Footer({ matches }) {
                                     fontWeight: "bold",
                                 }}
                                 onClick={() => {
+                                    window.open(linkProposal);
                                 }}
                             >
                                 Get Proposal

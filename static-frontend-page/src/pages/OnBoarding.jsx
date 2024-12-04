@@ -14,7 +14,7 @@ export default function Onboarding() {
     const isMobile = useMediaQuery(theme.breakpoints.down("desktop"));
 
     const proposalLink =
-        "https://firebasestorage.googleapis.com/v0/b/bondwork-dda21.appspot.com/o/Files%2FBondwork_Project_Proposal.pdf?alt=media&token=a8052f02-8ed9-47be-8426-2add0cdf0db1";
+        "https://firebasestorage.googleapis.com/v0/b/sightup-3b463.firebasestorage.app/o/SightUP_Proposal_Digital..pdf?alt=media&token=c07214ee-55c4-4987-850a-4c7f2f8ff74f";
 
     return (
         <main className="landing-page bg-neutrals-background items-center">
@@ -73,7 +73,7 @@ export default function Onboarding() {
                     paddingRight: "20px",
                 }}
             />
-            <Footer matches={isMobile} />
+            <Footer matches={isMobile} linkProposal={proposalLink} />
         </main>
     );
 }

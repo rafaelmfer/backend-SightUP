@@ -58,7 +58,7 @@ const CustomButtonStyled = styled(Button)(
             isOutlined && {
                 backgroundColor: theme.palette.neutrals.white,
                 color: theme.palette.secondary[980],
-                border: `2px solid ${theme.palette.secondary[980]}`,
+                border: `1px solid ${theme.palette.secondary[980]}`,
                 "& .MuiButton-startIcon, & .MuiButton-endIcon": {
                     filter: "brightness(0) saturate(100%) invert(32%) sepia(64%) saturate(2804%) hue-rotate(174deg) brightness(97%) contrast(89%)",
                 },
