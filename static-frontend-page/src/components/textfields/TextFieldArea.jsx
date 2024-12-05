@@ -115,7 +115,7 @@ const TextFieldArea = ({
     const [valueChanged, setValue] = useState("");
     return (
         <Box
-            class="flex flex-col"
+            className="flex flex-col"
             sx={sx}
             aria-disabled={disabled} 
             aria-invalid={error} 

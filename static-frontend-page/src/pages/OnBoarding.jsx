@@ -53,6 +53,7 @@ export default function Onboarding() {
                     paddingLeft: "8px",
                     paddingRight: "8px",
                 }}
+                linkProposal={proposalLink}
             />
 
             <Team

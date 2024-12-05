@@ -2,7 +2,7 @@ import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import mobileDesktopImg from "../../assets/images/desktopmobile.png";
 import CustomButton from "../buttons/CustomButton";
 
-export default function ClearVision({ id, matches, sx }) {
+export default function ClearVision({ id, matches, sx, linkProposal }) {
     const theme = useTheme();
     const isDesktop = useMediaQuery(theme.breakpoints.up("desktop"));
     return (
@@ -72,6 +72,7 @@ export default function ClearVision({ id, matches, sx }) {
                             fontWeight: "700",
                         }}
                         onClick={() => {
+                            window.open(linkProposal);
                         }}
                     >
                         View Proposal

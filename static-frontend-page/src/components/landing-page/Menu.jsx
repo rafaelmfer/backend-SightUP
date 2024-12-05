@@ -6,10 +6,9 @@ import sightUpLogo from "../../assets/icons/sighupLogo.svg";
 import logoOnly from "../../assets/icons/logoOnly.svg";
 import theme from "../../theme/theme";
 import { Player } from "@lottiefiles/react-lottie-player";
-import menuAnimation from "../../assets/animations/menu-default.json";
+import menuAnimation from "../../assets/animations/menu_icon.json";
 
 export default function _Menu({ matches, linkProposal }) {
-    const navigate = useNavigate();
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const playerRef = useRef(null);
 
@@ -30,10 +29,10 @@ export default function _Menu({ matches, linkProposal }) {
         }
         setIsDrawerOpen(open);
         if (open) {
-            playerRef.current.setPlayerSpeed(1);
+            playerRef.current.setPlayerSpeed(0.33);
             playerRef.current.play();
         } else {
-            playerRef.current.setPlayerSpeed(-1);
+            playerRef.current.setPlayerSpeed(-0.33);
             playerRef.current.play();
         }
     };

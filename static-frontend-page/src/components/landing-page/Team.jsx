@@ -102,13 +102,13 @@ const TeamMember = ({
             
             <Box
                 sx={{
-                    Width: "100%",
+                    width: "100%",
                     maxHeight: "auto",
                     overflow: "hidden",
                     borderRadius: "16px 16px 0 0",
                 }}
             >
-                <img src={image} alt={name} Width={"100%"}/>
+                <img src={image} alt={name} width={"100%"}/>
             </Box>
 
             <Typography

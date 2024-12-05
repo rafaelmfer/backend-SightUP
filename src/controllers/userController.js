@@ -278,7 +278,8 @@ const getDailyCheckInfo = async (req, res) => {
             });
             res.status(200).send(existDaily);
         } else {
-            const today = new Date();
+            const today = moment.tz(new Date(), "America/Vancouver").toDate();
+
             const threeDaysAgo = new Date();
             threeDaysAgo.setDate(today.getDate() - 5);
 
