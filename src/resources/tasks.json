@@ -1,0 +1,144 @@
+[
+    {
+        "_id": {
+            "$oid": "6702f86043321fa1eb25b51b"
+        },
+        "taskId": "va123",
+        "title": "Visual Acuity",
+        "shortDescription": "This test measures your ability to see fine details at different distances.",
+        "description": "The test refers to the sharpness of vision, which is measured by your ability to discern letters or details at a specific distance.",
+        "type": "test",
+        "testMode": {
+            "touch": "Tap or move the corresponding direction of the letter 'E'. If you cannot distinguish the letter, tap cannot see button.",
+            "voice": "Say the corresponding direction of the letter 'E'. If you cannot distinguish the letter, say “Cannot see”.",
+            "smartwatch": "Tap the corresponding direction of the letter 'E' at your smart phone screen. If you cannot distinguish, tap 'cannot see' button."
+        },
+        "videoMode": {
+            "touch": "visual_acuity_touch_mode.mp4",
+            "voice": "visual_acuity_voice_mode.mp4",
+            "smartwatch": "visual_acuity_smartwatch_mode.mp4"
+        },
+        "videoEyes": {
+            "right": "covering_left_eye_test.mp4",
+            "left": "covering_right_eye_test.mp4"
+        },
+        "images": "https://firebasestorage.googleapis.com/v0/b/sightup-3b463.firebasestorage.app/o/illustrations%2Fvision_test%2Fvisual_acuity_card.png?alt=media&token=658611a0-5ed8-4494-97e1-7edd0cf98b99",
+        "checkList": [
+            "Remove your eye wears once you start the test. ",
+            "Take hard contact lenses out 1 day before the test.",
+            "Check if the screen brightness is 100%."
+        ],
+        "howItWorks": [
+            "• The test required camera.",
+            "• Test can be done by holding your phone or from a distance."
+        ],
+        "imageInstruction": "https://firebasestorage.googleapis.com/v0/b/sightup-3b463.firebasestorage.app/o/illustrations%2Fvision_test%2Fvisual_acuity_test_card.png?alt=media&token=c06b1143-ab93-44ed-8afd-6ec4c74acb3c"
+    },
+    {
+        "_id": {
+            "$oid": "6702f87043321fa1eb25b51d"
+        },
+        "taskId": "astigmatism456",
+        "title": "Astigmatism",
+        "shortDescription": "This test helps in detecting astigmatism by measuring the distortion of vision.",
+        "description": "This test helps you determine the direction of astigmatism and assess if your current lens prescription is correct.",
+        "type": "test",
+        "testMode": {
+            "touch": "Tap the the line (1-12) directly that looks most clear. If you see all the lines clearly, tap ‘All lines same’.",
+            "voice": "Say the the line of the number that looks most clear. Say ‘number 00’. If all the lines looks clear, say ‘All lines same’.",
+            "smartwatch": "On your smartwatch, tap the number (1-12) of the clearest line on your smartphone. If all lines are equally clear, select ‘All lines same.’"
+        },
+        "videoMode": {
+            "touch": "astigmatism_touch_mode.mp4",
+            "voice": "astigmatism_voice_mode.mp4",
+            "smartwatch": "astigmatism_smartwatch_mode.mp4"
+        },
+        "videoEyes": {
+            "right": "covering_left_eye_test.mp4",
+            "left": "covering_right_eye_test.mp4"
+        },
+        "images": "https://firebasestorage.googleapis.com/v0/b/sightup-3b463.firebasestorage.app/o/illustrations%2Fvision_test%2Fastigmatism_card.png?alt=media&token=284ec0a5-9992-4d7b-9a89-414a54c18f48",
+        "checkList": [
+            "Remove your eye wears once you start the test.",
+            "Take hard contact lenses out 1 day before the test.",
+            "Check if the screen brightness is 100%."
+        ],
+        "howItWorks": [
+            "• The test required camera.",
+            "• Test can be done by holding your phone or from a distance."
+        ],
+        "imageInstruction": "https://firebasestorage.googleapis.com/v0/b/sightup-3b463.firebasestorage.app/o/illustrations%2Fvision_test%2Fastigmatism_test_card.png?alt=media&token=c9912201-20b7-4efb-bb9e-83dcba6df9f1"
+    },
+    {
+        "_id": {
+            "$oid": "6702f88243321fa1eb25b51f"
+        },
+        "taskId": "exercise789",
+        "title": "Circular Motion",
+        "description": "Enhance the range of motion and improve blood circulation around the eyes.",
+        "type": "exercise",
+        "video": "https://firebasestorage.googleapis.com/v0/b/sightup-3b463.firebasestorage.app/o/animations%2Fcircular_motion%2FCircular%20Motion_Exercise_fv.mp4?alt=media&token=d3d5ff28-af58-4c01-a94d-1fa1e679c895",
+        "images": "https://firebasestorage.googleapis.com/v0/b/sightup-3b463.firebasestorage.app/o/illustrations%2Feye_exercises%2Fmovement-cardimage.png?alt=media&token=9293e12c-ad6c-4aaf-9747-844daf8c8a8f",
+        "duration": 60,
+        "helps": ["Eye Strain", "Dry Eyes", "Red Eyes"],
+        "category": "Movement",
+        "motivation": "Let’s take a quick break and give your eyes some gentle movement!",
+        "imageInstruction": "https://firebasestorage.googleapis.com/v0/b/sightup-3b463.firebasestorage.app/o/illustrations%2Feye_exercises%2Fcircular_motion.png?alt=media&token=4b5ad4e1-ba36-4780-9bb4-1925ffee2aa1",
+        "finishTitle": "Great job! You have completed the Eye Movement Exercise.",
+        "advice": "For better results, repeat this exercise twice a day."
+    },
+    {
+        "_id": {
+            "$oid": "671b2d9efd4d42e2d96d3192"
+        },
+        "taskId": "exercise12345",
+        "title": "Blink Relaxation",
+        "description": "Alleviate dryness and reduce eye tension with this effective technique.",
+        "type": "exercise",
+        "video": "https://firebasestorage.googleapis.com/v0/b/sightup-3b463.firebasestorage.app/o/animations%2Fblink%2Fblink_relaxation_exercise_1.mp4?alt=media&token=fb8deb53-f2f9-4efa-a49e-cc063e9eaf02",
+        "images": "https://firebasestorage.googleapis.com/v0/b/sightup-3b463.firebasestorage.app/o/illustrations%2Feye_exercises%2Frelaxation_cardimage.png?alt=media&token=6fa9c341-5b66-495d-bb04-42e5d7aef856",
+        "duration": 20,
+        "helps": ["Irritated Eyes", "Dry Eyes", "Watery Eyes"],
+        "category": "Relaxation",
+        "motivation": "Give your eyes a quick refresh!",
+        "imageInstruction": "https://firebasestorage.googleapis.com/v0/b/sightup-3b463.firebasestorage.app/o/illustrations%2Feye_exercises%2Fblink_relaxation.png?alt=media&token=4c49ca88-9f9d-4a18-909c-9f1e7389d6c3",
+        "finishTitle": "Well done! Your eyes are more relaxed now.",
+        "advice": "Try to incorporate frequent blinking throughout the day to reduce eye strain."
+    },
+    {
+        "_id": {
+            "$oid": "671b2e18fd4d42e2d96d3193"
+        },
+        "taskId": "exercise6789",
+        "title": "Color Game",
+        "description": "Relieve eye discomfort caused by dryness and strain.",
+        "type": "exercise",
+        "video": "https://firebasestorage.googleapis.com/v0/b/sightup-3b463.firebasestorage.app/o/coordination_color_game_exercise_with%20sound_1.mp4?alt=media&token=d1843af2-960e-40ca-99d6-f9fb8834548c",
+        "images": "https://firebasestorage.googleapis.com/v0/b/sightup-3b463.firebasestorage.app/o/illustrations%2Feye_exercises%2Fcoordination_cardimage.png?alt=media&token=378c6908-f0a4-40df-9060-58e0a6ad92b7",
+        "duration": 20,
+        "helps": ["Eye Strain", "Dry Eyes", "Red Eyes"],
+        "category": "Coordination",
+        "motivation": "Let’s enhance your color perception!",
+        "imageInstruction": "https://firebasestorage.googleapis.com/v0/b/sightup-3b463.firebasestorage.app/o/illustrations%2Feye_exercises%2Fcolor_game.png?alt=media&token=af2a0813-6973-4890-8282-b5cc9a6015f0",
+        "finishTitle": "Nice work! You’ve completed the color coordination game.",
+        "advice": "Practice this game daily to boost your focus and coordination."
+    },
+    {
+        "_id": {
+            "$oid": "671b2e81fd4d42e2d96d3194"
+        },
+        "taskId": "exercise0004",
+        "title": "Stretching",
+        "description": "Stretch and relax your eyes muscles to improve comfort and reduce strain.",
+        "type": "exercise",
+        "video": "https://firebasestorage.googleapis.com/v0/b/sightup-3b463.firebasestorage.app/o/animations%2Fdistension%2Fdistension_stretching_video%2Cvoice%2C%20bell_fv%20(1).mp4?alt=media&token=b7305129-bdc9-4179-869b-b2b71ea308d5",
+        "images": "https://firebasestorage.googleapis.com/v0/b/sightup-3b463.firebasestorage.app/o/illustrations%2Feye_exercises%2Fdistension_cardimage.png?alt=media&token=8b48bcdf-6d17-4cfb-baca-16e155b60920",
+        "duration": 60,
+        "helps": ["Red Eyes", "Dry Eyes", "Itchy Eyes"],
+        "category": "Distension",
+        "motivation": "It’s time to give your eye muscles a nice stretch!",
+        "imageInstruction": "https://firebasestorage.googleapis.com/v0/b/sightup-3b463.firebasestorage.app/o/illustrations%2Feye_exercises%2Fstretching.png?alt=media&token=874b27e9-849e-430b-a3b8-f935f4848df7",
+        "finishTitle": "Good job! You’ve finished the stretching exercise.",
+        "advice": "Incorporate stretching after long periods of screen time."
+    }
+]

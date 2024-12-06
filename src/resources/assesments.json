@@ -1,0 +1,124 @@
+[
+    {
+        "_id": {
+            "$oid": "674c575fa8c10998f158a231"
+        },
+        "dailyCheckDate": "2024-12-01",
+        "email": "langara@langara.com",
+        "dailyExerciseInfo": [
+            {
+                "taskId": "exercise0004",
+                "title": "Stretching",
+                "category": "Distension",
+                "motivation": "It’s time to give your eye muscles a nice stretch!",
+                "timeSchedule": "9:00 am",
+                "duration": 60,
+                "eyeCondition": ["Red Eyes", "Dry Eyes", "Itchy Eyes"],
+                "advice": "Incorporate stretching after long periods of screen time.",
+                "imageInstruction": "https://firebasestorage.googleapis.com/v0/b/sightup-3b463.firebasestorage.app/o/illustrations%2Feye_exercises%2Fstretching.png?alt=media&token=874b27e9-849e-430b-a3b8-f935f4848df7",
+                "video": "https://firebasestorage.googleapis.com/v0/b/sightup-3b463.firebasestorage.app/o/animations%2Fdistension%2Fdistension_stretching_video%2Cvoice%2C%20bell_fv%20(1).mp4?alt=media&token=b7305129-bdc9-4179-869b-b2b71ea308d5",
+                "finishTitle": "Good job! You’ve finished the stretching exercise.",
+                "done": false,
+                "_id": {
+                    "$oid": "674c575fa8c10998f158a232"
+                }
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "674fa5bea8c10998f158a2e7"
+        },
+        "dailyCheckDate": "2024-12-03",
+        "email": "langara@langara.com",
+        "dailyExerciseInfo": [
+            {
+                "taskId": "exercise12345",
+                "title": "Blink Relaxation",
+                "category": "Relaxation",
+                "motivation": "Give your eyes a quick refresh!",
+                "timeSchedule": "9:00 am",
+                "duration": 20,
+                "eyeCondition": ["Irritated Eyes", "Dry Eyes", "Watery Eyes"],
+                "advice": "Try to incorporate frequent blinking throughout the day to reduce eye strain.",
+                "imageInstruction": "https://firebasestorage.googleapis.com/v0/b/sightup-3b463.firebasestorage.app/o/illustrations%2Feye_exercises%2Fblink_relaxation.png?alt=media&token=4c49ca88-9f9d-4a18-909c-9f1e7389d6c3",
+                "video": "https://firebasestorage.googleapis.com/v0/b/sightup-3b463.firebasestorage.app/o/animations%2Fblink%2Fblink_relaxation_exercise_1.mp4?alt=media&token=fb8deb53-f2f9-4efa-a49e-cc063e9eaf02",
+                "finishTitle": "Well done! Your eyes are more relaxed now.",
+                "done": false,
+                "_id": {
+                    "$oid": "674fa5bea8c10998f158a2e8"
+                }
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "6750b2b7a8c10998f158a32e"
+        },
+        "dailyCheckDate": "2024-12-04",
+        "email": "langara@langara.com",
+        "dailyExerciseInfo": [
+            {
+                "taskId": "exercise12345",
+                "title": "Blink Relaxation",
+                "category": "Relaxation",
+                "motivation": "Give your eyes a quick refresh!",
+                "timeSchedule": "9:00 am",
+                "duration": 20,
+                "eyeCondition": ["Irritated Eyes", "Dry Eyes", "Watery Eyes"],
+                "advice": "Try to incorporate frequent blinking throughout the day to reduce eye strain.",
+                "imageInstruction": "https://firebasestorage.googleapis.com/v0/b/sightup-3b463.firebasestorage.app/o/illustrations%2Feye_exercises%2Fblink_relaxation.png?alt=media&token=4c49ca88-9f9d-4a18-909c-9f1e7389d6c3",
+                "video": "https://firebasestorage.googleapis.com/v0/b/sightup-3b463.firebasestorage.app/o/animations%2Fblink%2Fblink_relaxation_exercise_1.mp4?alt=media&token=fb8deb53-f2f9-4efa-a49e-cc063e9eaf02",
+                "finishTitle": "Well done! Your eyes are more relaxed now.",
+                "done": true,
+                "_id": {
+                    "$oid": "6750b2b7a8c10998f158a32f"
+                }
+            }
+        ],
+        "dailyCheckInfo": {
+            "causes": ["Bad sleeping quality"],
+            "condition": ["Eye Strain"],
+            "done": true,
+            "visionStatus": "Very Good",
+            "infoTime": {
+                "$date": "2024-12-04T21:16:27.751Z"
+            }
+        }
+    },
+    {
+        "_id": {
+            "$oid": "675205908123dccb4e238a1d"
+        },
+        "dailyCheckDate": "2024-12-05",
+        "email": "langara@langara.com",
+        "dailyExerciseInfo": [
+            {
+                "taskId": "exercise12345",
+                "title": "Blink Relaxation",
+                "category": "Relaxation",
+                "motivation": "Give your eyes a quick refresh!",
+                "timeSchedule": "9:00 am",
+                "duration": 20,
+                "eyeCondition": ["Irritated Eyes", "Dry Eyes", "Watery Eyes"],
+                "advice": "Try to incorporate frequent blinking throughout the day to reduce eye strain.",
+                "imageInstruction": "https://firebasestorage.googleapis.com/v0/b/sightup-3b463.firebasestorage.app/o/illustrations%2Feye_exercises%2Fblink_relaxation.png?alt=media&token=4c49ca88-9f9d-4a18-909c-9f1e7389d6c3",
+                "video": "https://firebasestorage.googleapis.com/v0/b/sightup-3b463.firebasestorage.app/o/animations%2Fblink%2Fblink_relaxation_exercise_1.mp4?alt=media&token=fb8deb53-f2f9-4efa-a49e-cc063e9eaf02",
+                "finishTitle": "Well done! Your eyes are more relaxed now.",
+                "done": true,
+                "_id": {
+                    "$oid": "6750b2b7a8c10998f158a32f"
+                }
+            }
+        ],
+        "dailyCheckInfo": {
+            "causes": ["Bad sleeping quality"],
+            "condition": ["Eye Strain"],
+            "done": true,
+            "visionStatus": "Very Good",
+            "infoTime": {
+                "$date": "2024-12-05T22:45:09.885Z"
+            }
+        }
+    }
+]
