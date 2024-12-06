@@ -1,0 +1,113 @@
+[
+    {
+        "_id": {
+            "$oid": "6709dc2351fec0184885649b"
+        },
+        "email": "langara@langara.com",
+        "firstName": "Sidney",
+        "lastName": "S",
+        "userId": {
+            "$oid": "6709dc2351fec0184885649c"
+        },
+        "hashPassword": "$2b$10$DKBmI0Tauz9XcsiyqG3DRek0mQfZ7aCGW8pBANvXGtHhe7CU0eoqW",
+        "gender": "Male",
+        "userName": "Sidney",
+        "preferences": {
+            "goal": "Changes, Strain, History",
+            "frequency": "Once a day",
+            "unit": "cm"
+        },
+        "birthday": "19900506",
+        "eyeWear": {
+            "glasses": {
+                "appTest": false,
+                "prescriptionDate": {
+                    "$date": "2024-11-08T00:00:00.000Z"
+                },
+                "manufacturer": "Coopervision",
+                "productName": "Biofinity Toric 6pk",
+                "replacement": "1 month daily wear",
+                "prescriptionInfo": [
+                    {
+                        "testType": "SPH",
+                        "left": "-1.50",
+                        "right": "-4.00"
+                    },
+                    {
+                        "testType": "AXIS",
+                        "left": "180",
+                        "right": "90"
+                    },
+                    {
+                        "testType": "CYL",
+                        "left": "-0.75",
+                        "right": "-1.25"
+                    },
+                    {
+                        "testType": "PD",
+                        "left": "",
+                        "right": "63 mm"
+                    },
+                    {
+                        "testType": "ADD",
+                        "left": "",
+                        "right": "+1.75"
+                    },
+                    {
+                        "testType": "Prism",
+                        "left": "0.5",
+                        "right": "1.5"
+                    },
+                    {
+                        "testType": "Base",
+                        "left": "In",
+                        "right": "Out"
+                    }
+                ],
+                "notes": "Lens Materials: Plastic (CR-39)\nLens Coatings: Blue Light Filter Coating"
+            },
+            "contactLens": {
+                "appTest": false,
+                "prescriptionDate": {
+                    "$date": "2024-11-29T00:00:00.000Z"
+                },
+                "manufacturer": "Coopervision",
+                "productName": "Biofinity Toric 6pk",
+                "replacement": "1 month daily wear",
+                "prescriptionInfo": [
+                    {
+                        "testType": "VA",
+                        "left": "20/30",
+                        "right": "20/100"
+                    },
+                    {
+                        "testType": "AXIS",
+                        "left": "180",
+                        "right": "90"
+                    },
+                    {
+                        "testType": "CYL",
+                        "left": "-0.75",
+                        "right": "-1.25"
+                    },
+                    {
+                        "testType": "SPH",
+                        "left": "-1.50",
+                        "right": "-4.00"
+                    },
+                    {
+                        "testType": "BC",
+                        "left": "",
+                        "right": "8.6 mm"
+                    },
+                    {
+                        "testType": "DIA",
+                        "left": "",
+                        "right": "14.2 mm"
+                    }
+                ],
+                "notes": "Lens Materials: Plastic (CR-39)\nLens Coatings: Blue Light Filter Coating"
+            }
+        }
+    }
+]
