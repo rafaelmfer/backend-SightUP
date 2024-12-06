@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    min-width: 360px;
+}
+
+.landing-page {
+    height: auto;
+}
+
+.slick-arrow.slick-prev {
+    display: none !important;
+}
+
+.slick-arrow.slick-next {
+    display: none !important;
+}

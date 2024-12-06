@@ -1,8 +1,12 @@
 # SightUP
 
-## Project
+SightUP is a comprehensive vision care mobile app (Android, iOS) designed to simplify eye health management. It offers a
+personalized daily eye care routine, helping users stay consistent with their eye health practices, together with its
+own wearable app (WearOS).
 
-## How to run the project
+THIS REPOSITORY IS ONLY THE BACKEND SERVER. You can find the SightUP App in this [repository](https://github.com/rafaelmfer/kmp-SightUP)
+
+## How to run the backend server
 
 1. Create an account on the [MongoDB](https://www.mongodb.com/).
 2. Create a `.env` file inside the backend folder based on `.env.example` and fill the variables accordingly to your environment.
@@ -21,38 +25,6 @@ npm run start
 
 That's it! You're ready to explore BondWork platform.
 
-Ps.: You can use this endpoint to create the user to login, just make sure to fix `localhost:5000` to your backend url:
-
-```
-curl --location 'localhost:5000/api/auth/register' \
---header 'Content-Type: application/json' \
---header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImppZ2dseXB1ZmYud21kZEBnbWFpbC5jb20iLCJfaWQiOiI2NmE5NGVlOTBhY2YzMjVmOTI1ODI3NDQiLCJpYXQiOjE3MjI0NzAyMDQsImV4cCI6MTcyMjQ5OTAwNH0.Zwv0jtl-RxVIvPywFeeQ3gNUojUk7Kt5YlYLcFJ3pRk' \
---data-raw '{
-    "employeeID": 123456789,
-    "email": "jigglypuff.wmdd@gmail.com",
-    "password": "test12345",
-    "firstName": "User",
-    "lastName": "Tester",
-    "profilePicture": "",
-    "department": {
-        "name": "QA",
-        "id": 99
-    },
-    "jobLevel": "Mid Level",
-    "jobTitle": "QA",
-    "onBoardingDate": "2023-09-01",
-    "lastAccess": "2024-07-02",
-    "surveys": [],
-    "rewards": [],
-    "recognitions": {
-        "sent": [],
-        "received": []
-    },
-    "points": 5000,
-    "adminRights": true
-}'
-```
-
 ## Base Project / Tech Stack
 
 -   **IDE**: [VSCode - Visual Studio Code](https://code.visualstudio.com/)
@@ -60,8 +32,7 @@ curl --location 'localhost:5000/api/auth/register' \
 -   **Database**: [MongoDB](https://www.mongodb.com/)
 -   **Authentication**: [JWT](https://jwt.io/)
 
-
 ## Database
 
-- [Dictionary/Glossary]()
-- [EDR Diagram]()
+-   EDR Diagram
+    ![Data Model](https://github.com/rafaelmfer/backend-SightUP/blob/main/.github/assets/data_model.png)

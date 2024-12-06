@@ -259,3 +259,6 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,macos,visualstudiocode,node,react
 .vercel
+
+# Ignore firebase admin private key
+sightup-service-account-key.json
