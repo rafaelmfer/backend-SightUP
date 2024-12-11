@@ -23,7 +23,7 @@ npm install
 npm run start
 ```
 
-That's it! You're ready to explore BondWork platform.
+That's it!.
 
 ## Base Project / Tech Stack
 
