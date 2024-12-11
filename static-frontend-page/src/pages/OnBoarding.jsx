@@ -14,7 +14,7 @@ export default function Onboarding() {
     const isMobile = useMediaQuery(theme.breakpoints.down("desktop"));
 
     const proposalLink =
-        "https://firebasestorage.googleapis.com/v0/b/sightup-3b463.firebasestorage.app/o/SightUP_Proposal_Digital..pdf?alt=media&token=c07214ee-55c4-4987-850a-4c7f2f8ff74f";
+        "https://firebasestorage.googleapis.com/v0/b/sightup-3b463.firebasestorage.app/o/SightUP_Proposal_Digital_V2.pdf?alt=media&token=41515c5a-e627-4173-aedd-2d05b8d19c52";
 
     return (
         <main className="landing-page bg-neutrals-background items-center">
